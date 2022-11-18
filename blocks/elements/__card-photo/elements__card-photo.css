@@ -1,0 +1,10 @@
+.elements__card-photo {
+  max-width: 282px;
+  min-height: 282px;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 0;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  padding: 0;
+  margin: 0;
+}

@@ -1,17 +1,26 @@
-# Проект: Место
+# Проект: Путешествие по России
 
-### Обзор
+## О проекте
 
-* Figma
-* Картинки
++ Проект сделан при поддержке Яндекс.Практикум на основе HTML И CSS.
+
+## В этом проекте использовалось:
+* БЭМ
+* Nestled БЭМ
+* Flex-box
+* Grid Layout
+* Animation
+* Кроссбраузерная верстка
+* Адаптивность
+* Работа с Figma
+* Javascript
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=28212%3A269&t=oypCXHmeBTXclT6H-0)
 
-**Картинки**
+**GitHub Pages**
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+* [Ссылка GitHub Pages](https://anassstay.github.io/mesto/)
 
-Удачи!
+© Анастасия Федина

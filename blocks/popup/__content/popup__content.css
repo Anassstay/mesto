@@ -1,0 +1,16 @@
+.popup__content {
+  min-width: 358px;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  color: #000000;
+  margin-top: 34px;
+}
+
+@media screen and (max-width: 550px) {
+  .popup__content {
+    min-width: calc(100% - 44px);
+    margin-top: 25px;
+  }
+}

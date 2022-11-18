@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Анастасия Федина">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Места России</title>
+</head>
+
+<body class="page">
+
+  <header class="header">
+      <img src="./images/header-logo.svg" alt="Логотип" class="header__logo">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <div class="profile__info">
+        <img src="./images/avatar.jpg" alt="Аватар" class="profile__image">
+        <div class="profile__text">
+          <p class="profile__title">Жак-Ив Кусто</p>
+          <button class="profile__edit-button"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button"></button>
+    </section>
+
+    <section class="elements">
+      <figure class="elements__card">
+        <img class ="elements__card-photo" src="./images/kamchatka.jpg" alt="Камчатка">
+        <figcaption class="elements__place">
+          <p class="elements__text">Камчатка</p>
+          <button class="elements__like"></button>
+        </figcaption>
+      </figure>
+
+      <figure class="elements__card">
+        <img class ="elements__card-photo" src="./images/altay.jpg" alt="Алтай">
+        <figcaption class="elements__place">
+          <p class="elements__text">Алтай</p>
+          <button class="elements__like"></button>
+        </figcaption>
+      </figure>
+
+      <figure class="elements__card">
+        <img class ="elements__card-photo" src="./images/baikal.jpg" alt="Ьайкал">
+        <figcaption class="elements__place">
+          <p class="elements__text">Байкал</p>
+          <button class="elements__like"></button>
+        </figcaption>
+      </figure>
+
+      <figure class="elements__card">
+        <img class ="elements__card-photo" src="./images/ural.jpg" alt="Урал">
+        <figcaption class="elements__place">
+          <p class="elements__text">Урал</p>
+          <button class="elements__like"></button>
+        </figcaption>
+     </figure>
+
+      <figure class="elements__card">
+        <img class ="elements__card-photo" src="./images/sahalin.jpg" alt="Сахалин">
+        <figcaption class="elements__place">
+          <p class="elements__text">Сахалин</p>
+          <button class="elements__like"></button>
+        </figcaption>
+      </figure>
+
+      <figure class="elements__card">
+        <img class ="elements__card-photo" src="./images/dombay.jpg" alt="Домбай">
+        <figcaption class="elements__place">
+          <p class="elements__text">Домбай</p>
+          <button class="elements__like"></button>
+        </figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer__author">&copy; 2022 Анастасия Федина</p>
+  </footer>
+
+<!-- Popup -->
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button"></button>
+      <form class="popup__content">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input class="popup__name" type="text" placeholder="Имя">
+        <input class="popup__info" type="text" placeholder="О себе">
+        <button class="popup__save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+<script src="./scripts/index.js"></script>
+</body>
+</html>
