@@ -1,6 +1,3 @@
-// Проверяем подключение скрипта
-console.log('Привет, мир!')
-
 // Выборка DOM-элементов
 // Сам попап
 const popupElement = document.querySelector('.popup');
@@ -10,21 +7,21 @@ const popupCloseButtonElement = popupElement.querySelector('.popup__close-button
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 
 const formElement = popupElement.querySelector('.popup__content');
-const nameInput = popupElement.querySelector('.popup__name');
-const infoInput = popupElement.querySelector('.popup__info');
+const nameInput = popupElement.querySelector('.popup__input_type_name');
+const infoInput = popupElement.querySelector('.popup__input_type_info');
 const profileName = document.querySelector('.profile__title');
 const profileInfo = document.querySelector('.profile__subtitle');
 
 // Открыть попап
 const openPopup = function () {
-    popupElement.classList.add('popup__is-opened');
+    popupElement.classList.add('.popup__opened');
     nameInput.value = profileName.textContent;
     infoInput.value = profileInfo.textContent;
 }
 
 // Закрыть попап
 const closePopup = function () {
-    popupElement.classList.remove('popup__is-opened');
+    popupElement.classList.remove('.popup__opened');
 }
 
 // Закрыть при клике за пределами попапа

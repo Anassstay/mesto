@@ -9,12 +9,12 @@
   background-image: url(../../../images/close-button.svg);
   object-fit: cover;
   border: none;
-  transition: opacity .3s linear;
   cursor: pointer;
+  transition: opacity .3s linear;
 }
 
 .popup__close-button:hover {
-  opacity: .5;
+  opacity: .6;
 }
 
 @media screen and (max-width: 550px) {

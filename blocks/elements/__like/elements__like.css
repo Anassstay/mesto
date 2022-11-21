@@ -1,5 +1,7 @@
 .elements__like {
   background-image: url(../../../images/like.svg);
+  /*задаем прозрачный фон*/
+  background-color: transparent;
   background-repeat: no-repeat;
   width: 22px;
   height: 19px;
@@ -9,11 +11,9 @@
   border: none;
   /*вместо стрелки указатель*/
   cursor: pointer;
-  /*задаем прозрачный фон*/
-  background: transparent;
+  transition: opacity .3s linear;
 }
 
 .elements__like:hover {
-  
+opacity: .5;
 }
-  
