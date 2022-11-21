@@ -10,6 +10,7 @@
   object-fit: contain;
   padding: 0;
  transition: opacity .3s linear;
+ cursor: pointer;
 }
 
 .profile__add-button:hover {
