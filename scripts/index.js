@@ -3,6 +3,7 @@
 const popupElement = document.querySelector('.popup');
 // Окно закрывающее попап
 const popupCloseButtonElement = popupElement.querySelector('.popup__close-button');
+
 // Кнопка открывающая попап
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 
@@ -14,14 +15,14 @@ const profileInfo = document.querySelector('.profile__subtitle');
 
 // Открыть попап
 const openPopup = function () {
-    popupElement.classList.add('.popup__opened');
+    popupElement.classList.add('popup__opened');
     nameInput.value = profileName.textContent;
     infoInput.value = profileInfo.textContent;
 }
 
 // Закрыть попап
 const closePopup = function () {
-    popupElement.classList.remove('.popup__opened');
+    popupElement.classList.remove('popup__opened');
 }
 
 // Закрыть при клике за пределами попапа
