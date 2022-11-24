@@ -5,3 +5,10 @@
   gap: 16px 18px;
   align-self: center;
 }
+
+@media screen and (max-width: 597px) {
+  .profile__text {
+    margin-left: 38px;
+    gap: 14px 10px;
+  }
+}

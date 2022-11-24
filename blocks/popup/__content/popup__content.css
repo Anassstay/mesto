@@ -8,7 +8,7 @@
   margin-top: 34px;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 450px) {
   .popup__content {
     min-width: calc(100% - 44px);
     margin-top: 25px;

@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 598px) {
+@media screen and (max-width: 597px) {
   .profile__subtitle {
     text-align: center;
   }

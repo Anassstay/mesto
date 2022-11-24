@@ -3,9 +3,9 @@
   height: 32px;
   position: absolute;
   top: -40px;
-  left: 438px;
+  right: -30px;
   padding: 0;
-  background-color: unset;
+  background-color: transparent;
   background-image: url(../../../images/close-button.svg);
   object-fit: cover;
   border: none;
@@ -22,5 +22,6 @@
     width: 20px;
     height: 20px;
     background-image: url(../../../images/button-close-mobile.svg);
+    right: 0;
   }
 }

@@ -3,7 +3,8 @@
     background-color: #000000;
     color: #ffffff;
     font-weight: 400;
-    min-width: 320px;
+    /* min-width: 320px; */
+    /* Убрала минимульную ширину, тк появляется прокрутка */
     max-width: 1280px;
     margin: 0 auto;
     padding: 45px 0 60px;
