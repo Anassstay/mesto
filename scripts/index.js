@@ -15,14 +15,14 @@ const profileInfo = document.querySelector('.profile__subtitle');
 
 // Открыть попап
 const openPopup = function () {
-    popupElement.classList.add('popup__opened');
+    popupElement.classList.add('popup_opened');
     nameInput.value = profileName.textContent;
     infoInput.value = profileInfo.textContent;
 }
 
 // Закрыть попап
 const closePopup = function () {
-    popupElement.classList.remove('popup__opened');
+    popupElement.classList.remove('popup_opened');
 }
 
 // Закрыть при клике за пределами попапа

@@ -1,7 +1,7 @@
 .header {
   max-width: 880px;
   width: 100%;
-  border-bottom: 1px solid rgba(84, 84, 84, 0.5);
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   margin: 0 auto 40px;
   box-sizing:padding-box;
 }
