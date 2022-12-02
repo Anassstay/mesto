@@ -30,53 +30,15 @@
     </section>
 
     <section class="elements">
-      <article class="elements__card">
-        <img class ="elements__card-photo" src="./images/kamchatka.jpg" alt="Камчатка">
+      <ul class="elements__list">
+      <li class="elements__card">
+        <img class ="elements__card-photo" src="&{item.link}" alt="Фото">
         <div class="elements__place">
-          <h2 class="elements__text">Камчатка</h2>
+          <h2 class="elements__text">&{item.name}</h2>
           <button class="elements__like" type="button"></button>
         </div>
-      </article>
-
-      <article class="elements__card">
-        <img class ="elements__card-photo" src="./images/altay.jpg" alt="Алтай">
-        <div class="elements__place">
-          <h2 class="elements__text">Алтай</h2>
-          <button class="elements__like" type="button"></button>
-      </div>
-      </article>
-
-      <article class="elements__card">
-        <img class ="elements__card-photo" src="./images/baikal.jpg" alt="Байкал">
-        <div class="elements__place">
-          <h2 class="elements__text">Байкал</h2>
-          <button class="elements__like" type="button"></button>
-        </div>
-      </article>
-
-      <article class="elements__card">
-        <img class ="elements__card-photo" src="./images/ural.jpg" alt="Урал">
-        <div class="elements__place">
-          <h2 class="elements__text">Урал</h2>
-          <button class="elements__like" type="button"></button>
-        </div>
-     </article>
-
-      <article class="elements__card">
-        <img class ="elements__card-photo" src="./images/sahalin.jpg" alt="Сахалин">
-        <div class="elements__place">
-          <h2 class="elements__text">Сахалин</h2>
-          <button class="elements__like" type="button"></button>
-        </div>
-      </article>
-
-      <article class="elements__card">
-        <img class ="elements__card-photo" src="./images/dombay.jpg" alt="Домбай">
-        <div class="elements__place">
-          <h2 class="elements__text">Домбай</h2>
-          <button class="elements__like" type="button"></button>
-        </div>
-      </article>
+      </li>
+      </ul>
     </section>
 
   </main>
@@ -86,7 +48,7 @@
   </footer>
 
 <!-- Popup на редактирование информации -->
-  <section class="popup">
+  <section class="popup popup_edit">
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       <form class="popup__content" name="content">
@@ -99,17 +61,40 @@
   </section>
 
   <!-- Popup на добавление карточек -->
-  <!-- <section class="popup">
-    <div class="popup__container">
-      <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-      <form class="popup__content" name="content">
-        <h2 class="popup__title">Новое место</h2>
-        <input class="popup__input popup__input_type_name" type="text" placeholder="Название" name="fullname">
-        <input class="popup__input popup__input_type_info" type="text" placeholder="Ссылка на картинку" name="info">
-        <button class="popup__save-button" type="submit" aria-label="Добавить изменения">Сохранить</button>
+  <section class="popup popup_add">
+    <div class="popup__container popup__container_add">
+      <button class="popup__close-button popup__close-button" type="button" aria-label="Закрыть"></button>
+      <form class="popup__content popup__content_add" name="content">
+        <h2 class="popup__title popup__title_add">Новое место</h2>
+        <input class="popup__input popup__input_add_name" type="text" placeholder="Название" name="fullname">
+        <input class="popup__input popup__input_add_link" type="text" placeholder="Ссылка на картинку" name="link">
+        <button class="popup__save-button popup__save-button" type="submit" aria-label="Добавить изменения">Сохранить</button>
       </form>
     </div>
-  </section> -->
+  </section>
+
+  <!-- Popup на открытие фото -->
+  <section class="popup popup_photo">
+    <div class="popup__container_photo">
+      <div class="popup__content_photo">
+        <img src="#" alt="#" class="popup__image">
+        <p class="popup__image-text"></p>
+      </div>
+      <button class="popup__close-button_photo" type="button" aria-label="Закрыть"></button>
+    </div>
+  </section>
+
+
+  <template id="cards-template">
+    <div class="cards">
+      <button class="cards__delete-button" type="button" aria-label="Удалить"></button>
+      <img class="cards__image" alt="Фото">
+      <div class="card__container">
+        <h2 class="cards__title"></h2>
+        <button class="cards__like" aria-label="Поставить лайк"></button>
+      </div>
+    </div>
+  </template>
 
 <script src="./scripts/index.js"></script>
 </body>
