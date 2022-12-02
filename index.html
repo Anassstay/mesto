@@ -30,7 +30,7 @@
     </section>
 
     <section class="elements">
-      <ul class="elements__list">
+      <!-- <ul class="elements__list">
       <li class="elements__card">
         <img class ="elements__card-photo" src="&{item.link}" alt="Фото">
         <div class="elements__place">
@@ -38,7 +38,18 @@
           <button class="elements__like" type="button"></button>
         </div>
       </li>
-      </ul>
+      </ul> -->
+
+      <template id="cards-template">
+        <div class="cards">
+          <button class="cards__delete-button" type="button" aria-label="Удалить"></button>
+          <img class="cards__image" alt="Фото">
+          <div class="card__container">
+            <h2 class="cards__title"></h2>
+            <button class="cards__like" aria-label="Поставить лайк"></button>
+          </div>
+        </div>
+      </template>
     </section>
 
   </main>
@@ -85,16 +96,7 @@
   </section>
 
 
-  <template id="cards-template">
-    <div class="cards">
-      <button class="cards__delete-button" type="button" aria-label="Удалить"></button>
-      <img class="cards__image" alt="Фото">
-      <div class="card__container">
-        <h2 class="cards__title"></h2>
-        <button class="cards__like" aria-label="Поставить лайк"></button>
-      </div>
-    </div>
-  </template>
+
 
 <script src="./scripts/index.js"></script>
 </body>

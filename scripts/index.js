@@ -20,6 +20,33 @@ const cardsContainer = document.querySelector('.cards');
 const cardsInputTitle = document.querySelector('.popup__input_add_name');
 const cardsInputImage = document.querySelector('.popup__input_add_link');
 
+///////////////////Выборка DOM-элементов для попапа добавления карточек////////////////////////////
+
+// Сам попап
+const popupElementAdd = document.querySelector('.popup_add');
+// Окно закрывающее попап
+const popupCloseButtonElementAdd = popupElementAdd.querySelector('.popup__close-button');
+
+// Кнопка открывающее попап
+const popupOpenButtonElementAdd = document.querySelector('.profile__add-button');
+
+const formElementAdd = popupElementAdd.querySelector('.popup__content_add');
+const nameInputAdd = popupElementAdd.querySelector('.popup__input_add_name');
+const linkInputAdd = popupElementAdd.querySelector('.popup__input_add_link');
+
+const openImage = document.querySelector('.popup__image');
+const openImageText = document.querySelector('.popup__image-text');
+
+
+// Подключаю template
+
+const cardsElements = document.querySelector('.elements');
+const cardsTemplate = document.querySelector('#cards-template').content.querySelector('.elements__card');
+// const cardsTitle = cards.querySelector('.cards__title');
+// const cardsImage = cards.querySelector('.cards__image');
+// const cardsDeleteButton = cards.querySelector('.cards__delete-button');
+// const cardsLikeButton = cards.querySelector('.cards__like');
+
 
 // Открыть попап  
 const openPopup = function () {
@@ -33,12 +60,12 @@ const closePopup = function () {
     popupElement.classList.remove('popup_opened');
 }
 
-// Закрыть при клике за пределами попапа
-const closePopupByClickOnOverlay = function (event) {
-    if (event.target === event.currentTarget) {
-        closePopup();
-    }
-}
+// // Закрыть при клике за пределами попапа
+// const closePopupByClickOnOverlay = function (event) {
+//     if (event.target === event.currentTarget) {
+//         closePopup();
+//     }
+// }
 
 //Обработка отправки введенных в попап данных
 function formSubmitHandler(evt) {
@@ -56,22 +83,10 @@ function formSubmitHandler(evt) {
 //Регистрируем обработчики событий по клику
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
-popupElement.addEventListener('click', closePopupByClickOnOverlay);
+// popupElement.addEventListener('click', closePopupByClickOnOverlay);
 formElement.addEventListener('submit', formSubmitHandler);
 
-///////////////////Выборка DOM-элементов для попапа добавления карточек////////////////////////////
 
-// Сам попап
-const popupElementAdd = document.querySelector('.popup_add');
-// Окно закрывающее попап
-const popupCloseButtonElementAdd = popupElementAdd.querySelector('.popup__close-button');
-
-// Кнопка открывающее попап
-const popupOpenButtonElementAdd = document.querySelector('.profile__add-button');
-
-const formElementAdd = popupElementAdd.querySelector('.popup__content_add');
-const nameInputAdd = popupElementAdd.querySelector('.popup__input_add_name');
-const linkInputAdd = popupElementAdd.querySelector('.popup__input_add_link');
 
 // Открыть попап
 const openPopupAdd = function () {
@@ -83,12 +98,12 @@ const closePopupAdd = function () {
     popupElementAdd.classList.remove('popup_opened');
 }
 
-// Закрыть при клике за пределами попапа
-const closePopupAddByClickOnOverlay = function (event) {
-    if (event.target === event.currentTarget) {
-        closePopup(closePopupAdd);
-    }
-}
+// // Закрыть при клике за пределами попапа
+// const closePopupAddByClickOnOverlay = function (event) {
+//     if (event.target === event.currentTarget) {
+//         closePopup(closePopupAdd);
+//     }
+// }
 
 //Обработка отправки введенных в попап данных
 function addFormSubmitHandler(event) {
@@ -98,23 +113,21 @@ function addFormSubmitHandler(event) {
       link: cardsInputImage.value
     }
     cardsContainer.prepend(createElement(addValue))
-    closePopup(closePopupAdd);
+    closePopupAdd();
 }
 
 //Регистрируем обработчики событий по клику
+
 // popupOpenButtonElementAdd.addEventListener('click', openPopupAdd);
 popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
-popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay);
+// popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay);
 formElementAdd.addEventListener('submit', addFormSubmitHandler);
 
 popupOpenButtonElementAdd.addEventListener('click', () => {
   cardsInputTitle.value = "";
   cardsInputImage.value = "";
-  openPopup(openPopupAdd);
+  openPopupAdd();
 })
-
-
-
 
 // Массив карточек
 const initialCards = [
@@ -144,92 +157,46 @@ const initialCards = [
     }
   ];
 
-// Подключаю template
-
-const cardsListElement = document.querySelector('.elements__list');
-const cardsTemplate = document.querySelector('#cards-template').content.querySelector('.elements__card');
-
-
-function createElement(item) {
-  // 1. innerHTML
-
-  const template = `
-    <li class="elements__card">
-      <img class ="elements__card-photo" src="&{item.link}" alt="Фото">
-      <div class="elements__place">
-        <h2 class="elements__text">&{item.name}</h2>
-        <button class="elements__like" type="button"></button>
-      </div>
-  </li>
-    `
-
-    document.body.innerHTML = document.body.innerHTML + template
-    document.body.innerHTML += template
-
-    cardsListElement.innerHTML += template;
-
-    // 2. insertAdjacentHTML
-
-    cardsListElement.insertAdjacentHTML('beforeend', template)
-
-    // 3. template
-
+function createElement(cardsTitleValue, cardsImageValue) {
 // клонируем содержимое тега template
-const cards = cardsTemplate.cloneNode(true).content;
-
-const cardsTitle = cards.querySelector('.cards__title');
-const cardsImage = cards.querySelector('.cards__image');
-const cardsDeleteButton = cards.querySelector('.cards__delete-button');
-const cardsLikeButton = cards.querySelector('.cards__like');
+const cards = cardsTemplate.querySelector().cloneNode(true).content;
 
 // наполняем содержимым
-cardsTitle.textContent = item.name
-cardsImage.src = item.link
-cardsImage.alt = item.name
+cards.querySelector('.cards__title').textContent = cardsTitleValue;
+cards.querySelector('.cards__image').src = cardsImageValue;
+cards.querySelector('.cards__image').alt = cardsTitleValue;
 
-// Обработчики кликов для кнопок лайка и удаления
-cardsDeleteButton.addEventListener('click', handleDeleteButtonClick)
-cardsLikeButton.addEventListener('click', handleLikeButtonClick)
+// Обработчик событий для кнопки удаления
+cards.querySelector('.cards__delete-button').addEventListener('click', function () {
+  cards.remove();
+});
+
+// Обработчик событий для кнопки лайка
+cards.querySelector('.cards__like').addEventListener('click', function (event) {
+  event.target.classList.toggle('cards__like_active');
+});
+
+cards.querySelector('.cards__image').addEventListener('click', function () {
+  openPopup();
+  openImageText.textContent= cardsTitleValue;
+  openImageText = cardsTitleValue;
+  openImage.src = cardsImageValue;
+});
+
 
 return cards;
 }
 
-// Переключатель для лайка
-const handleLikeButtonClick = (event) => {
-  event.target.classList.toggle('cards__like_active')
+function handleCardsFormSubmit(event) {
+  event.preventDefault(); // строчка отменяет стандартную отправку формы
+  cardsElements.prepend(createElement(cardsInputTitle.value, cardsInputImage.value));
+  cardsInputTitle.value = ' '; // Очищаем форму
+  cardsInputImage.value = ' ';
+  closePopup();
 }
 
-// Удаление карточки
-const handleDeleteButtonClick = (event) => {
-  event.target.closest('.elements__card').remove()
-}
-
-
-// Функция делает две вещи - создает элемент (вызывая createElement) и добавляет его на страницу
-// item - объект с данными cards
-// wrapElement - элемент, в который добавится наша карточка
-const renderCards = (item, wrapElement) => {
-  const element = createElement(item)
-  // отображаем на странице
-  wrapElement.append(element);
-}
+form.addEventListener('submit', handleCardsFormSubmit);
 
 initialCards.forEach(function(item) {
-  renderCards(item, cardsListElement)
-})
-
-
-const handleCardsFormSubmit = (event) => {
-  event.preventDefault()
-
-  // здесь мы сами создаем объект, который будем передавать в renderCards
-  const cardsS = {
-      name: cardsInputTitle.value,
-      link: cardsInputImage.value 
-  }
-
-  renderCards(cardsS, cardsListElement)
-
-}
-
-form.addEventListener('submit', handleCardsFormSubmit)
+  cardsElements.append(createElement(item.name, item.link));
+});
