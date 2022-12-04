@@ -21,12 +21,15 @@
 
 /* elements */
 @import url(../blocks/elements/elements.css);
-@import url(../blocks/elements/__card-photo/elements__card-photo.css);
-@import url(../blocks/elements/__card/elements__card.css);
-@import url(../blocks/elements/__like/elements__like.css);
-@import url(../blocks/elements/__like_active/elements__like_active.css);
-@import url(../blocks/elements/__text/elements__text.css);
-@import url(../blocks/elements/__place/elements__place.css);
+
+/* cards */
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__container/cards__container.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/__like/cards__like.css);
+@import url(../blocks/cards/__like_active/cards__like_active.css);
+@import url(../blocks/cards/__title/cards__title.css);
+@import url();
 
 /* footer */
 @import url(../blocks/footer/footer.css);

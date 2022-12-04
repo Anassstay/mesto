@@ -1,4 +1,4 @@
-.elements__like {
+.cards__like {
   background-image: url(../../../images/like.svg);
   /*задаем прозрачный фон*/
   background-color: transparent;
@@ -14,6 +14,6 @@
   transition: opacity .3s linear;
 }
 
-.elements__like:hover {
+.cards__like:hover {
 opacity: .5;
 }

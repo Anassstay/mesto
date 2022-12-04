@@ -41,7 +41,7 @@ const openImageText = document.querySelector('.popup__image-text');
 // Подключаю template
 
 const cardsElements = document.querySelector('.elements');
-const cardsTemplate = document.querySelector('#cards-template').content.querySelector('.elements__card');
+const cardsTemplate = document.querySelector('#cards-template').content;
 // const cardsTitle = cards.querySelector('.cards__title');
 // const cardsImage = cards.querySelector('.cards__image');
 // const cardsDeleteButton = cards.querySelector('.cards__delete-button');
@@ -108,11 +108,15 @@ const closePopupAdd = function () {
 //Обработка отправки введенных в попап данных
 function addFormSubmitHandler(event) {
     event.preventDefault(); // строчка отменяет стандартную отправку формы
-    const addValue = {
-      name: cardsInputTitle.value,
-      link: cardsInputImage.value
-    }
-    cardsContainer.prepend(createElement(addValue))
+    // const addValue = {
+    //   name: cardsInputTitle.value,
+    //   link: cardsInputImage.value
+    // }
+    // cardsContainer.prepend(createElement(addValue))
+    cardsContainer.prepend(createElement(nameInput, infoInput));
+    nameInput.value = ' ';
+    infoInput.value = ' ';
+    
     closePopupAdd();
 }
 
@@ -159,7 +163,7 @@ const initialCards = [
 
 function createElement(cardsTitleValue, cardsImageValue) {
 // клонируем содержимое тега template
-const cards = cardsTemplate.querySelector().cloneNode(true).content;
+const cards = cardsTemplate.querySelector('.cards').cloneNode(true).content;
 
 // наполняем содержимым
 cards.querySelector('.cards__title').textContent = cardsTitleValue;
@@ -176,13 +180,13 @@ cards.querySelector('.cards__like').addEventListener('click', function (event) {
   event.target.classList.toggle('cards__like_active');
 });
 
+//  Обработчик событий для открытия фото
 cards.querySelector('.cards__image').addEventListener('click', function () {
   openPopup();
-  openImageText.textContent= cardsTitleValue;
+  openImageText.textContent = cardsTitleValue;
   openImageText = cardsTitleValue;
   openImage.src = cardsImageValue;
 });
-
 
 return cards;
 }
@@ -195,7 +199,7 @@ function handleCardsFormSubmit(event) {
   closePopup();
 }
 
-form.addEventListener('submit', handleCardsFormSubmit);
+formElementAdd.addEventListener('submit', handleCardsFormSubmit);
 
 initialCards.forEach(function(item) {
   cardsElements.append(createElement(item.name, item.link));
