@@ -1,4 +1,4 @@
-
+// извиняюсь, что на первое ревью отправила пустую работу, я случайно. Не получилось реализовать все до конца, я запуталась. эта тема дается нелегко((
 
 ///////////////////Выборка DOM-элементов////////////////////////////
 
@@ -51,6 +51,9 @@ const openImageText = document.querySelector('.popup__image-text');
 
 // Попап открытия фото
 const popupContainerPhoto = document.querySelector('.popup_photo')
+
+// попап закрытия фото
+const popupCloseButtonElementPhoto = popupContainerPhoto.querySelector('.popup__close-button');
 
 // Подключаю template
 const cardsElements = document.querySelector('.elements');
@@ -137,8 +140,6 @@ function addFormSubmitHandler(event) {
 }
 
 //Регистрируем обработчики событий по клику
-// popupElementAdd.addEventListener('click', openPopupAdd);
-// popupElementAdd.addEventListener('click', closePopupAdd);
 // popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay);
 popupOpenButtonElementAdd.addEventListener('click', openPopupAdd);
 popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
@@ -151,7 +152,6 @@ popupOpenButtonElementAdd.addEventListener('click', () => {
   cardsInputImage.value = ' ';
   openPopup(openPopupAdd);
 })
-
 
 // Открыть попап открытия фото
 const openPopupPhoto = function () {
@@ -192,33 +192,33 @@ const initialCards = [
   ];
 
 function createElement(cardsTitleValue, cardsImageValue) {
-// клонируем содержимое тега template
-const cards = cardsTemplate.querySelector('.cards').cloneNode(true);
+  // клонируем содержимое тега template
+  const cards = cardsTemplate.querySelector('.cards').cloneNode(true);
 
-// наполняем содержимым
-cards.querySelector('.cards__title').textContent = cardsTitleValue;
-cards.querySelector('.cards__image').src = cardsImageValue;
-cards.querySelector('.cards__image').alt = cardsTitleValue;
+  // наполняем содержимым
+  cards.querySelector('.cards__title').textContent = cardsTitleValue;
+  cards.querySelector('.cards__image').src = cardsImageValue;
+  cards.querySelector('.cards__image').alt = cardsTitleValue;
 
-// Обработчик событий для кнопки удаления
-cards.querySelector('.cards__delete-button').addEventListener('click', function () {
+  // Обработчик событий для кнопки удаления
+  cards.querySelector('.cards__delete-button').addEventListener('click', function () {
   cards.remove();
-});
+  });
 
-// Обработчик событий для кнопки лайка
-cards.querySelector('.cards__like').addEventListener('click', function (event) {
-  event.target.classList.toggle('cards__like_active');
-});
+  // Обработчик событий для кнопки лайка
+  cards.querySelector('.cards__like').addEventListener('click', function (event) {
+    event.target.classList.toggle('cards__like_active');
+  });
 
-//  Обработчик событий для открытия фото
-cards.querySelector('.cards__image').addEventListener('click', function () {
-  openPopup(openPopupPhoto);
-  openImageText.textContent = cardsTitleValue;
-  openImageText = cardsTitleValue;
-  openImage.src = cardsImageValue;
-});
+  //  Обработчик событий для открытия фото
+  cards.querySelector('.cards__image').addEventListener('click', function () {
+    openPopup(openPopupPhoto);
+    openImageText.textContent = cardsTitleValue;
+    openImageText = cardsTitleValue;
+    openImage.src = cardsImageValue;
+  });
 
-return cards;
+  return cards;
 }
 
 function handleCardsFormSubmit(event) {
@@ -232,6 +232,7 @@ function handleCardsFormSubmit(event) {
 //Регистрируем обработчик событий
 formElementAdd.addEventListener('submit', handleCardsFormSubmit);
 
+// Подключаем массив
 initialCards.forEach(function(item) {
   cardsElements.append(createElement(item.name, item.link));
 });
