@@ -29,7 +29,7 @@
 @import url(../blocks/cards/__like/cards__like.css);
 @import url(../blocks/cards/__like_active/cards__like_active.css);
 @import url(../blocks/cards/__title/cards__title.css);
-@import url();
+@import url(../blocks/cards/__delete-button/cards__delete-button.css);
 
 /* footer */
 @import url(../blocks/footer/footer.css);
