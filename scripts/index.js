@@ -1,3 +1,5 @@
+
+
 ///////////////////Выборка DOM-элементов////////////////////////////
 
 // Все попапы
@@ -73,6 +75,8 @@ const openPopupEdit = function () {
   nameInput.value = profileName.textContent;
   infoInput.value = profileInfo.textContent;
 }
+//Регистрируем обработчик событий по клику для открытия попапа редактирования
+popupOpenButtonElement.addEventListener('click', openPopupEdit);
 
 // Закрыть попап редактирования
 const closePopupEdit = function () {
@@ -136,6 +140,7 @@ function addFormSubmitHandler(event) {
 // popupElementAdd.addEventListener('click', openPopupAdd);
 // popupElementAdd.addEventListener('click', closePopupAdd);
 // popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay);
+popupOpenButtonElementAdd.addEventListener('click', openPopupAdd);
 popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
 formElementAdd.addEventListener('submit', addFormSubmitHandler);
 
@@ -224,6 +229,7 @@ function handleCardsFormSubmit(event) {
   closePopup(popupElementAdd);
 }
 
+//Регистрируем обработчик событий
 formElementAdd.addEventListener('submit', handleCardsFormSubmit);
 
 initialCards.forEach(function(item) {
