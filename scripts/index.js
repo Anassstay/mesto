@@ -69,7 +69,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-popupCloseButtonElementAdd.addEventListener('click', closePopup);
+// popupCloseButtonElementAdd.addEventListener('click', closePopup);
 
 // Открыть попап редактирования инф
 const openPopupEdit = function () {
@@ -94,9 +94,9 @@ const closePopupEdit = function () {
 // }
 
 //Обработка отправки введенных в попап данных
-function formSubmitHandler(evt) {
+function formSubmitHandler(event) {
   // эта строчка отменяет стандартную отправку формы
-  evt.preventDefault();
+  event.preventDefault();
   // Из попапа редактирования подставить значения в профиль
   profileName.textContent = nameInput.value;
   profileInfo.textContent = infoInput.value;
@@ -141,6 +141,7 @@ function addFormSubmitHandler(event) {
 
 //Регистрируем обработчики событий по клику
 // popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay);
+// popupOpenButtonElementAdd.addEventListener('click', addFormSubmitHandler);
 popupOpenButtonElementAdd.addEventListener('click', openPopupAdd);
 popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
 formElementAdd.addEventListener('submit', addFormSubmitHandler);
@@ -148,20 +149,23 @@ formElementAdd.addEventListener('submit', addFormSubmitHandler);
 // Открыть попап
 popupOpenButtonElementAdd.addEventListener('click', () => {
   // Очистить форму
-  cardsInputTitle.value = ' ';
   cardsInputImage.value = ' ';
+  cardsInputTitle.value = ' ';
   openPopup(openPopupAdd);
 })
 
-// Открыть попап открытия фото
-const openPopupPhoto = function () {
+// Открыть попап открытия фото, пыталась реализовать через общую функцию, но попап не открывается
+const openPopupPhoto = function (popup) {
   popupContainerPhoto.classList.add('popup_opened');
 }
 
-// Закрыть попап открытия фото
-const closePopupPhoto = function () {
+// Закрыть попап закрытия фото, пыталась реализовать через общую функцию, но попап не открывается
+const closePopupPhoto = function (popup) {
   popupContainerPhoto.classList.remove('popup_opened');
+
 }
+
+popupContainerPhoto.addEventListener('click', closePopupPhoto);
 
 // Массив карточек
 const initialCards = [
@@ -192,30 +196,31 @@ const initialCards = [
   ];
 
 function createElement(cardsTitleValue, cardsImageValue) {
-  // клонируем содержимое тега template
+  // клонируем содержимое тега template, true = со всем его содержимым
   const cards = cardsTemplate.querySelector('.cards').cloneNode(true);
 
   // наполняем содержимым
-  cards.querySelector('.cards__title').textContent = cardsTitleValue;
   cards.querySelector('.cards__image').src = cardsImageValue;
   cards.querySelector('.cards__image').alt = cardsTitleValue;
+  cards.querySelector('.cards__title').textContent = cardsTitleValue;
 
-  // Обработчик событий для кнопки удаления
+  // Обработчик событий с функцией кнопки удаления
   cards.querySelector('.cards__delete-button').addEventListener('click', function () {
   cards.remove();
   });
 
-  // Обработчик событий для кнопки лайка
+  // Обработчик событий с функцией кнопки лайка
   cards.querySelector('.cards__like').addEventListener('click', function (event) {
     event.target.classList.toggle('cards__like_active');
   });
 
-  //  Обработчик событий для открытия фото
+  //  Обработчик событий с функцией открытия фото
   cards.querySelector('.cards__image').addEventListener('click', function () {
-    openPopup(openPopupPhoto);
-    openImageText.textContent = cardsTitleValue;
-    openImageText = cardsTitleValue;
+    // openPopup(openPopupPhoto);
+    openPopupPhoto();
     openImage.src = cardsImageValue;
+    openImageText.textContent = cardsTitleValue;
+    // openImageText = cardsTitleValue;
   });
 
   return cards;
@@ -224,8 +229,9 @@ function createElement(cardsTitleValue, cardsImageValue) {
 function handleCardsFormSubmit(event) {
   event.preventDefault(); // строчка отменяет стандартную отправку формы
   cardsElements.prepend(createElement(cardsInputTitle.value, cardsInputImage.value));
-  cardsInputTitle.value = ' '; // Очищаем форму
+  // Очищаем форму
   cardsInputImage.value = ' ';
+  cardsInputTitle.value = ' ';
   closePopup(popupElementAdd);
 }
 
@@ -234,5 +240,6 @@ formElementAdd.addEventListener('submit', handleCardsFormSubmit);
 
 // Подключаем массив
 initialCards.forEach(function(item) {
+  // Добавляем функцию с переданным значением в секцию с темплейтом, отображаем на странице
   cardsElements.append(createElement(item.name, item.link));
 });
