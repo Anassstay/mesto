@@ -128,7 +128,8 @@ const closePopupAdd = function () {
 function addFormSubmitHandler(event) {
   // эта строчка отменяет стандартную отправку формы
   event.preventDefault(); 
-  cardsContainer.prepend(createElement(nameInput.value, infoInput.value));
+  // cardsContainer.prepend(createElement(nameInput.value, infoInput.value));
+  createElement(nameInput.value, infoInput.value);
   // Очистить форму
   nameInput.value = ' ';
   infoInput.value = ' ';
