@@ -1,5 +1,3 @@
-//Выборка DOM-элементов
-
 const popupEditProfile = document.querySelector('.popup_edit');
 const popupOpenEditProfile = document.querySelector('.profile__edit-button');
 const popupCloseEditProfile = popupEditProfile.querySelector('.popup__close-button');
