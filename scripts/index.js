@@ -8,8 +8,8 @@ const profileName = document.querySelector('.profile__title');
 const profileInfo = document.querySelector('.profile__subtitle');
 
 const popupAddCard = document.querySelector('.popup_add');
-const popupOpenAddCard = document.querySelector('.profile__add-button');
-const popupCloseAddCard = popupAddCard.querySelector('.popup__close-button');
+const buttonOpenAddCard = document.querySelector('.profile__add-button');
+const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
 const submitAddCardForm = popupAddCard.querySelector('.popup__content_add');
 const cardsInputTitle = document.querySelector('.popup__input_add_name');
 const cardsInputImage = document.querySelector('.popup__input_add_link');
