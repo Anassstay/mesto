@@ -16,8 +16,8 @@ const cardsInputImage = document.querySelector('.popup__input_add_link');
 
 const popupPhoto = document.querySelector('.popup_photo');
 const popupClosePhoto = popupPhoto.querySelector('.popup__close-button');
-const openImage = document.querySelector('.popup__image');
-const openImageText = document.querySelector('.popup__image-text');
+const imagePhotoPopup = document.querySelector('.popup__image');
+const textPhotoPopup = document.querySelector('.popup__image-text');
 
 const cardsContainer = document.querySelector('.cards');
 const cardsElements = document.querySelector('.elements');
@@ -31,15 +31,13 @@ const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
 }
 
-const openPopupEdit = function () { 
-  popupOpenEditProfile.addEventListener('click', function () {
-    openPopup(popupEditProfile)
-  });
+  buttonOpenEditProfile.addEventListener('click', function () {
+  openPopup(popupEditProfile)
   nameInput.value = profileName.textContent; 
   infoInput.value = profileInfo.textContent;
-}
+});
 
-popupCloseEditProfile.addEventListener('click', function () {
+buttonCloseEditProfile.addEventListener('click', function () {
   closePopup(popupEditProfile)
 })
 
@@ -50,13 +48,12 @@ function submitEditProfileFormHandler (event) {
   closePopup(popupEditProfile)
 }
 
-popupOpenEditProfile.addEventListener('click', openPopupEdit);
 submitEditProfileForm.addEventListener('submit', submitEditProfileFormHandler);
 
-popupOpenAddCard.addEventListener('click', function () {
+buttonOpenAddCard.addEventListener('click', function () {
   openPopup(popupAddCard)
 })
-popupCloseAddCard.addEventListener('click', function () {
+buttonCloseAddCard.addEventListener('click', function () {
   closePopup(popupAddCard)
 })
 
@@ -72,11 +69,7 @@ submitAddCardForm.addEventListener('submit', submitAddCardFormHandler);
 popupPhoto.addEventListener('click', function () {
   openPopup(popupPhoto)
 })
-popupClosePhoto.addEventListener('click', function () {
-  closePopup(popupPhoto)
-})
-// строчкой выше прописала закрытие по крестику, но почему-то это не работает, хотя писала по аналогии с другими попапами. Поэтому ниже код для закрытия в любом месте на фото
-popupPhoto.addEventListener('click', function () {
+buttonClosePhoto.addEventListener('click', function () {
   closePopup(popupPhoto)
 })
 
@@ -96,9 +89,9 @@ function createCard(cardsTitleValue, cardsImageValue) {
 
   cardsImage.addEventListener('click', function () {
     openPopup(popupPhoto);
-    openImage.src = cardsImageValue;
-    openImage.alt = cardsTitleValue; 
-    openImageText.textContent = cardsTitleValue;
+    imagePhotoPopup.src = cardsImageValue;
+    imagePhotoPopup.alt = cardsTitleValue; 
+    textPhotoPopup.textContent = cardsTitleValue;
   });
 
   return cards;
