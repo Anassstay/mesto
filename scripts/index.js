@@ -15,7 +15,7 @@ const cardsInputTitle = document.querySelector('.popup__input_add_name');
 const cardsInputImage = document.querySelector('.popup__input_add_link');
 
 const popupPhoto = document.querySelector('.popup_photo');
-const popupClosePhoto = popupPhoto.querySelector('.popup__close-button');
+const buttonClosePhoto = popupPhoto.querySelector('.popup__close-button');
 const imagePhotoPopup = document.querySelector('.popup__image');
 const textPhotoPopup = document.querySelector('.popup__image-text');
 
