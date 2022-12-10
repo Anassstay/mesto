@@ -1,7 +1,7 @@
 const popupEditProfile = document.querySelector('.popup_edit');
 const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
 const buttonCloseEditProfile = popupEditProfile.querySelector('.popup__close-button');
-const submitEditProfileForm = popupEditProfile.querySelector('.popup__content');
+const formEditProfile = popupEditProfile.querySelector('.popup__content');
 const nameInput = popupEditProfile.querySelector('.popup__input_type_name');
 const infoInput = popupEditProfile.querySelector('.popup__input_type_info');
 const profileName = document.querySelector('.profile__title');
@@ -41,14 +41,14 @@ buttonCloseEditProfile.addEventListener('click', function () {
   closePopup(popupEditProfile)
 })
 
-function submitEditProfileFormHandler (event) {
+function formEditProfileHandler (event) {
   event.preventDefault();
   profileName.textContent = nameInput.value;
   profileInfo.textContent = infoInput.value;
   closePopup(popupEditProfile)
 }
 
-submitEditProfileForm.addEventListener('submit', submitEditProfileFormHandler);
+formEditProfile.addEventListener('submit', formEditProfileHandler);
 
 buttonOpenAddCard.addEventListener('click', function () {
   openPopup(popupAddCard)
