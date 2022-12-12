@@ -66,11 +66,6 @@ function formAddCardHandler (event) {
 
 formAddCard.addEventListener('submit', formAddCardHandler);
 
-// по прежнему не работала функция клика по кнопке закрытия пока не закомментировала функцию открытия, так подсказали в пачке. но причину я не поняла( 
-  // я же не задаю ее нигде больше. как тогда открывается попап с фото
-// popupPhoto.addEventListener('click', function () {
-//   openPopup(popupPhoto)
-// })
 buttonClosePhoto.addEventListener('click', function () {
   closePopup(popupPhoto)
 })
