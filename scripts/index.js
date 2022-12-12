@@ -1,3 +1,7 @@
+const cardsContainer = document.querySelector('.cards');
+const cardsElements = document.querySelector('.elements');
+const cardsTemplate = document.querySelector('#cards-template').content;
+
 const popupEditProfile = document.querySelector('.popup_edit');
 const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
 const buttonCloseEditProfile = popupEditProfile.querySelector('.popup__close-button');
@@ -18,10 +22,6 @@ const popupPhoto = document.querySelector('.popup_photo');
 const buttonClosePhoto = popupPhoto.querySelector('.popup__close-button');
 const imagePhotoPopup = document.querySelector('.popup__image');
 const textPhotoPopup = document.querySelector('.popup__image-text');
-
-const cardsContainer = document.querySelector('.cards');
-const cardsElements = document.querySelector('.elements');
-const cardsTemplate = document.querySelector('#cards-template').content;
 
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
@@ -72,6 +72,10 @@ popupPhoto.addEventListener('click', function () {
 buttonClosePhoto.addEventListener('click', function () {
   closePopup(popupPhoto)
 })
+
+// popupPhoto.addEventListener('click', function () {
+//   closePopup(popupPhoto)
+// })
 
 function createCard(cardsTitleValue, cardsImageValue) {
   const cards = cardsTemplate.querySelector('.cards').cloneNode(true);
