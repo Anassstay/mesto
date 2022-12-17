@@ -51,3 +51,4 @@
 @import url(../blocks/popup/__save-button_disabled/popup__save-button_disabled.css);
 @import url(../blocks/popup/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__input_type_error/popup__input_type_error.css);
+@import url(../blocks/popup/_photo/popup_photo.css);

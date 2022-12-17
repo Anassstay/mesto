@@ -1,22 +1,53 @@
 // Сделано по вебинару
 
-  // 1. Показать и убрать ошибку
+//   // 1. Показать и убрать ошибку
+// const checkInputValidity = (input, config) => {
+//   const error = document.querySelector(`#${input.id}-error`); 
+
+//   if (input.validity.valid) {
+//   // убрать ошибку
+//   error.textContent = ''
+//   error.classList.remove(config.ErrorClass)
+//   input.classList.remove(config.inputErrorClass)
+
+//   } else {
+//    // показать ошибку
+//    error.textContent = input.validationMessage
+//    error.classList.add(config.ErrorClass)
+//    input.classList.add(config.inputErrorClass)
+//   }
+// };
+
+
+
+const showInputError = (input, config) => {
+const error = document.querySelector(`#${input.id}-error`); 
+input.classList.add(config.inputErrorClass)
+error.textContent = input.validationMessage
+error.classList.add(config.ErrorClass)
+}
+
+const hideInputError = (input, config) => {
+const error = document.querySelector(`#${input.id}-error`); 
+
+input.classList.remove(config.inputErrorClass)
+error.classList.remove(config.ErrorClass)
+error.textContent = ''
+}
+
 const checkInputValidity = (input, config) => {
-  const error = document.querySelector(`#${input.id}-error`); 
-
   if (input.validity.valid) {
-  // убрать ошибку
-  error.textContent = ''
-  error.classList.remove(config.ErrorClass)
-  input.classList.remove(config.inputErrorClass)
-
+hideInputError(input, config)
   } else {
    // показать ошибку
-   error.textContent = input.validationMessage
-   error.classList.add(config.ErrorClass)
-   input.classList.add(config.inputErrorClass)
+showInputError(input, config)
   }
 };
+
+
+
+
+
 
 // 2. Сделать кнопку сохранить активной и неактивной
 const toggleButtonState = (inputs, button, config) => {
@@ -25,12 +56,12 @@ const toggleButtonState = (inputs, button, config) => {
   if (isFormValid) {
     // Раздизейблить
     button.classList.remove(config.inactiveButtonClass)
-    button.disabled = ''
+    button.disabled = false
 
   } else {
     // Задизейблить
     button.classList.add(config.inactiveButtonClass)
-    button.disabled = 'disabled'
+    button.disabled = true
   }
 };
 
@@ -40,10 +71,6 @@ const enableValidation = (config) => {
   forms.forEach(form => {
     const inputs = [...form.querySelectorAll(config.inputSelector)]
     const button = form.querySelector(config.submitButtonSelector)
-  
-    form.addEventListener('submit', (event) => {
-      event.preventDefault()
-    })
   
     inputs.forEach(input => {
       input.addEventListener('input', () => {

@@ -8,4 +8,9 @@
   background-color: transparent;
   border: 1px solid #C4C4C4;
   border-radius: 2px;
+  cursor: default;
+}
+
+.popup__save-button_disabled:hover {
+  opacity: 1;
 }
