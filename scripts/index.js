@@ -67,7 +67,7 @@ function formEditProfileHandler (event) {
   event.preventDefault();
   profileName.textContent = nameInput.value;
   profileInfo.textContent = infoInput.value;
-  closePopup(popup)
+  closePopup(popupEditProfile)
 }
 
 function formAddCardHandler (event, popup) {
@@ -76,7 +76,7 @@ function formAddCardHandler (event, popup) {
   formAddCard.reset();
   event.submitter.classList.add('popup__save-button_disabled')
   event.submitter.disabled = true
-  closePopup(popup);
+  closePopup(popupAddCard);
 }
 
 function createCard(cardsTitleValue, cardsImageValue) {
