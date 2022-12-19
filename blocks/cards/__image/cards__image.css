@@ -1,5 +1,5 @@
 .cards__image {
-  max-width: 282px;
+  min-width: 282px;
   min-height: 282px;
   object-fit: cover;
   overflow: hidden;

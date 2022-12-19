@@ -1,25 +1,3 @@
-// Сделано по вебинару
-
-//   // 1. Показать и убрать ошибку
-// const checkInputValidity = (input, config) => {
-//   const error = document.querySelector(`#${input.id}-error`); 
-
-//   if (input.validity.valid) {
-//   // убрать ошибку
-//   error.textContent = ''
-//   error.classList.remove(config.ErrorClass)
-//   input.classList.remove(config.inputErrorClass)
-
-//   } else {
-//    // показать ошибку
-//    error.textContent = input.validationMessage
-//    error.classList.add(config.ErrorClass)
-//    input.classList.add(config.inputErrorClass)
-//   }
-// };
-
-
-
 const showInputError = (input, config) => {
 const error = document.querySelector(`#${input.id}-error`); 
 input.classList.add(config.inputErrorClass)
@@ -37,17 +15,13 @@ error.textContent = ''
 
 const checkInputValidity = (input, config) => {
   if (input.validity.valid) {
+    // скрыть ошибку
 hideInputError(input, config)
   } else {
    // показать ошибку
 showInputError(input, config)
   }
 };
-
-
-
-
-
 
 // 2. Сделать кнопку сохранить активной и неактивной
 const toggleButtonState = (inputs, button, config) => {
@@ -71,7 +45,9 @@ const enableValidation = (config) => {
   forms.forEach(form => {
     const inputs = [...form.querySelectorAll(config.inputSelector)]
     const button = form.querySelector(config.submitButtonSelector)
-  
+    // для установки кнопок на формах при загрузке сайта в корректное положение
+    toggleButtonState(inputs, button, config)
+
     inputs.forEach(input => {
       input.addEventListener('input', () => {
         checkInputValidity(input, config)

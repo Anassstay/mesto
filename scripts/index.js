@@ -1,6 +1,6 @@
 // Задаем const
 
-const cardsElements = document.querySelector('.elements');
+const cardsContainer = document.querySelector('.elements');
 const cardsTemplate = document.querySelector('#cards-template').content;
 
 const popupEditProfile = document.querySelector('.popup_edit');
@@ -42,7 +42,7 @@ const closePopup = function (popup) {
 }
 
 initialCards.forEach(function(item) {
-  cardsElements.append(createCard(item.name, item.link));
+  cardsContainer.append(createCard(item.name, item.link));
   });
 
 
@@ -58,8 +58,8 @@ document.querySelectorAll('.popup').forEach( popup => {
 // Закрыть попап кликом на Escape
 function handleKeyEscape (evt) {
   if (evt.key === 'Escape') {
-    const popupClosePopupByClickOnEscape = document.querySelector('.popup_opened');
-    closePopup(popupClosePopupByClickOnEscape);
+    const popupToClose = document.querySelector('.popup_opened');
+    closePopup(popupToClose);
   }
 }
 
@@ -72,7 +72,7 @@ function formEditProfileHandler (event) {
 
 function formAddCardHandler (event, popup) {
   event.preventDefault();
-  cardsElements.prepend(createCard(cardsInputTitle.value, cardsInputImage.value));
+  cardsContainer.prepend(createCard(cardsInputTitle.value, cardsInputImage.value));
   formAddCard.reset();
   event.submitter.classList.add('popup__save-button_disabled')
   event.submitter.disabled = true
