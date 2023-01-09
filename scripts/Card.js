@@ -18,7 +18,7 @@ export class Card {
   _getTemplate() {
     // забираем разметку из HTML и клонируем элемент
     const cardElement = document
-    .querySelector('this._templateSelector')
+    .querySelector(this._templateSelector)
     .content
     .querySelector('.cards')
     .cloneNode(true);
@@ -70,7 +70,6 @@ export class Card {
         this._handleOpenPopup();
       })
     };
-  // end class Card
   }
 
   

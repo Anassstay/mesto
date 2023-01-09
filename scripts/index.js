@@ -83,29 +83,29 @@ function formAddCardHandler (event, popup) {
 }
 
 function createCard(cardsTitleValue, cardsImageValue) {
-  const cards = cardsTemplate.querySelector('.cards').cloneNode(true);///
-  const cardsImage = cards.querySelector('.cards__image');///
-  cardsImage.src = cardsImageValue;///
-  cardsImage.alt = cardsTitleValue;///
-  cards.querySelector('.cards__title').textContent = cardsTitleValue;///
+  const cards = cardsTemplate.querySelector('.cards').cloneNode(true);
+  const cardsImage = cards.querySelector('.cards__image');
+  cardsImage.src = cardsImageValue;
+  cardsImage.alt = cardsTitleValue;
+  cards.querySelector('.cards__title').textContent = cardsTitleValue;
   cards.querySelector('.cards__delete-button').addEventListener('click', function () {
     cards.remove();
-  });///
+  });
   cards.querySelector('.cards__like').addEventListener('click', function (event) {
     event.target.classList.toggle('cards__like_active');
-  });///
+  });
   cardsImage.addEventListener('click', function () {
     openPopup(popupPhoto);
     imagePhotoPopup.src = cardsImageValue;
     imagePhotoPopup.alt = cardsTitleValue; 
     textPhotoPopup.textContent = cardsTitleValue;
-  });///
+  });
   return cards;
 }
 
 // Добавить новую карточку
 const renderNewCard = (evt) => {
-  evt.preventDefault(); 
+  evt.preventDefault();
   const renderNewCardData = 
     {
       name: cardsInputTitle.value,
