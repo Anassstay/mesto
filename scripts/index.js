@@ -104,14 +104,14 @@ function createCard(cardsTitleValue, cardsImageValue) {
 }
 
 // Добавить новую карточку
-const addNewCard = (evt) => {
+const renderNewCard = (evt) => {
   evt.preventDefault(); 
-  const newCardNameAndLink = 
+  const renderNewCardData = 
     {
       name: cardsInputTitle.value,
       link: cardsInputImage.value
     };
-  const card = new Card (newCardNameAndLink.name, newCardNameAndLink.link, '#card');
+  const card = new Card (renderNewCardData.name, renderNewCardData.link, '#cards-template');
   const cardElement = card.generateCard();
   document.querySelector('.elements').prepend(cardElement);
   closePopup(popup);
@@ -119,13 +119,19 @@ const addNewCard = (evt) => {
 
 // Создать карточку через класс Card
 initialCards.forEach((item) => {
-  const card = new Card(item.name, 'cards');
+  // При создании карточки передайте ей два аргумента — объект с данными и селектор template-элемента
+  const card = new Card(item, '#cards-template');
   const cardElement = card.generateCard();
   
   // Добавляем в DOM
   document.querySelector('.elements').append(cardElement);
   });
 
+// валидация карточек через класс
+const validationPopupEditProfile = new FormValidator(selection, popupEditProfile);
+const validationPopupAddCard = new FormValidator(selection, popupAddCard);
+validationPopupEditProfile.enableValidation();
+validationPopupAddCard.enableValidation();
 
 buttonOpenEditProfile.addEventListener('click', function () {
   openPopup(popupEditProfile)
@@ -140,3 +146,4 @@ buttonOpenAddCard.addEventListener('click', function () {
 });
 
 formAddCard.addEventListener('submit', formAddCardHandler);
+formAddCard.addEventListener('submit', renderNewCard);

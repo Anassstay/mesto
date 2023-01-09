@@ -7,9 +7,9 @@
 import { imagePhotoPopup, textPhotoPopup, openPopup, popupPhoto } from './index.js';
 
 export class Card {
-  constructor (text, link, templateSelector) {
-  this._text = text;
-  this._link = link;
+  constructor (data, templateSelector) {
+  this._name = data.name;
+  this._link = data.link;
   this._templateSelector = templateSelector;
   }
   // научить класс Card возвращать разметку
@@ -18,7 +18,7 @@ export class Card {
   _getTemplate() {
     // забираем разметку из HTML и клонируем элемент
     const cardElement = document
-    .querySelector('.cards-template')
+    .querySelector('this._templateSelector')
     .content
     .querySelector('.cards')
     .cloneNode(true);
@@ -35,8 +35,8 @@ export class Card {
     this._element = this._getTemplate();
     // Добавим данные
     this._element.querySelector('.cards__image').src = this._link;
-    this._element.querySelector('.cards__image').alt = this._text;
-    this._element.querySelector('.cards__title').textContent = this._text;
+    this._element.querySelector('.cards__image').alt = this._name;
+    this._element.querySelector('.cards__title').textContent = this._name;
     this._setEventListeners();
     // Вернём элемент наружу
     return this._element;
@@ -53,8 +53,8 @@ export class Card {
   _handleOpenPopup() {
     openPopup(popupPhoto);
     imagePhotoPopup.src = this._link;
-    imagePhotoPopup.alt = this._text; 
-    textPhotoPopup.textContent = this._text;
+    imagePhotoPopup.alt = this._name; 
+    textPhotoPopup.textContent = this._name;
   }
 
     // Добавить слушателя событий

@@ -66,11 +66,11 @@ class FormValidator {
       const inputs = [...form.querySelectorAll(this._inputSelector)]
       const button = form.querySelector(this._submitButtonSelector)
       // для установки кнопок на формах при загрузке сайта в корректное положение
-      toggleButtonState(inputs, button)
+      this._toggleButtonState(inputs, button)
 
       inputs.forEach(input => {
         input.addEventListener('input', () => {
-          this._checkInputValidity(input, config)
+          this._checkInputValidity(input)
           this._toggleButtonState(inputs, button)
         })
       })
