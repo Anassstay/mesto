@@ -1,71 +1,67 @@
-// исправила критикал, но получается, что попап редактирования при открытии заблокирован до внесения каких-либо изменений. 
-// А на видео в задании попап при открытии активен. Мне посоветовали вариант добавить toggleButtonState внутри функции открытия модалки в индекс.js. 
-// Но вообще, конечно, логичнее оставить кнопку заблокированной до внесения изменений, Но это не по заданию. Или не критично?
+// const showInputError = (input, config) => {
+// const error = document.querySelector(`#${input.id}-error`); 
+// input.classList.add(config.inputErrorClass)
+// error.textContent = input.validationMessage
+// error.classList.add(config.ErrorClass)
+// }
 
-const showInputError = (input, config) => {
-const error = document.querySelector(`#${input.id}-error`); 
-input.classList.add(config.inputErrorClass)
-error.textContent = input.validationMessage
-error.classList.add(config.ErrorClass)
-}
+// const hideInputError = (input, config) => {
+// const error = document.querySelector(`#${input.id}-error`); 
 
-const hideInputError = (input, config) => {
-const error = document.querySelector(`#${input.id}-error`); 
+// input.classList.remove(config.inputErrorClass)
+// error.classList.remove(config.ErrorClass)
+// error.textContent = ''
+// }
 
-input.classList.remove(config.inputErrorClass)
-error.classList.remove(config.ErrorClass)
-error.textContent = ''
-}
+// const checkInputValidity = (input, config) => {
+//   if (input.validity.valid) {
+//     // скрыть ошибку
+// hideInputError(input, config)
+//   } else {
+//    // показать ошибку
+// showInputError(input, config)
+//   }
+// };
 
-const checkInputValidity = (input, config) => {
-  if (input.validity.valid) {
-    // скрыть ошибку
-hideInputError(input, config)
-  } else {
-   // показать ошибку
-showInputError(input, config)
-  }
-};
+// // 2. Сделать кнопку сохранить активной и неактивной
+// const toggleButtonState = (inputs, button, config) => {
+//   const isFormValid = inputs.every(input => input.validity.valid)
 
-// 2. Сделать кнопку сохранить активной и неактивной
-const toggleButtonState = (inputs, button, config) => {
-  const isFormValid = inputs.every(input => input.validity.valid)
+//   if (isFormValid) {
+//     // Раздизейблить
+//     button.classList.remove(config.inactiveButtonClass)
+//     button.disabled = false
 
-  if (isFormValid) {
-    // Раздизейблить
-    button.classList.remove(config.inactiveButtonClass)
-    button.disabled = false
+//   } else {
+//     // Задизейблить
+//     button.classList.add(config.inactiveButtonClass)
+//     button.disabled = true
+//   }
+// };
 
-  } else {
-    // Задизейблить
-    button.classList.add(config.inactiveButtonClass)
-    button.disabled = true
-  }
-};
+// // 3. Работа с массивами forms и inputs
+// const enableValidation = (config) => {
+//   const forms = [...document.querySelectorAll(config.formSelector)]
+//   forms.forEach(form => {
+//     const inputs = [...form.querySelectorAll(config.inputSelector)]
+//     const button = form.querySelector(config.submitButtonSelector)
+//     // для установки кнопок на формах при загрузке сайта в корректное положение
+//     toggleButtonState(inputs, button, config)
 
-// 3. Работа с массивами forms и inputs
-const enableValidation = (config) => {
-  const forms = [...document.querySelectorAll(config.formSelector)]
-  forms.forEach(form => {
-    const inputs = [...form.querySelectorAll(config.inputSelector)]
-    const button = form.querySelector(config.submitButtonSelector)
-    // для установки кнопок на формах при загрузке сайта в корректное положение
-    toggleButtonState(inputs, button, config)
+//     inputs.forEach(input => {
+//       input.addEventListener('input', () => {
+//         checkInputValidity(input, config)
+//         toggleButtonState(inputs, button, config)
+//       })
+//     })
+//   })
+// };
 
-    inputs.forEach(input => {
-      input.addEventListener('input', () => {
-        checkInputValidity(input, config)
-        toggleButtonState(inputs, button, config)
-      })
-    })
-  })
-};
-
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
+// enableValidation({
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   submitButtonSelector: '.popup__save-button',
+//   inactiveButtonClass: 'popup__save-button_disabled',
+//   inputErrorClass: 'popup__input_type_error',
+//   errorClass: 'popup__error_visible'
+// });
