@@ -43,7 +43,8 @@ export class Card {
   }
   
   _deleteCard() {
-    this._element.querySelector('.cards__delete-button').closest('.card').remove();
+    this._element.querySelector('.cards__delete-button').closest('.cards').remove();
+    // this._element.remove();
   }
   
   _likeCard() {
@@ -66,9 +67,9 @@ export class Card {
       this._element.addEventListener('click', () => {
         this._likeCard();
       })
-      this._element.addEventListener('click', () => {
-        this._handleOpenPopup();
-      })
+      // this._element.addEventListener('click', () => {
+      //   this._handleOpenPopup();
+      // })
     };
   }
 
