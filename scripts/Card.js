@@ -4,13 +4,15 @@
 //содержит приватные методы для каждого обработчика;
 //содержит один публичный метод, который возвращает полностью работоспособный и наполненный данными элемент карточки.
 
-import { imagePhotoPopup, textPhotoPopup, openPopup, popupPhoto } from './index.js';
+import { imagePhotoPopup, textPhotoPopup, openPopup, popupPhoto, templateSelector } from './index.js';
 
 export class Card {
-  constructor (data, templateSelector) {
+  constructor (data, templateSelector, handleOpenPopup) {
   this._name = data.name;
-  this._link = data.link;
+  this._link = data.link;                                                                                                                                                                                                  
   this._templateSelector = templateSelector;
+  this._data = data;
+  this._handleOpenPopup = handleOpenPopup
   }
   // научить класс Card возвращать разметку
   // Метод _getTemplate — приватный. Мы вызовем его внутри класса, чтобы получить готовую разметку перед размещением на страницу. 
@@ -37,6 +39,7 @@ export class Card {
     this._element.querySelector('.cards__image').src = this._link;
     this._element.querySelector('.cards__image').alt = this._name;
     this._element.querySelector('.cards__title').textContent = this._name;
+    // imagePhotoPopup.addEventListener('click', this._handleOpenPopup);
     this._setEventListeners();
     // Вернём элемент наружу
     return this._element;
@@ -44,34 +47,23 @@ export class Card {
   
   _deleteCard() {
     this._element.querySelector('.cards__delete-button').closest('.cards').remove();
-    // this._element.remove();
   }
   
   _likeCard() {
     this._element.querySelector('.cards__like').classList.toggle('cards__like_active');
   }
 
-  _handleOpenPopup() {
-    openPopup(popupPhoto);
-    imagePhotoPopup.src = this._link;
-    imagePhotoPopup.alt = this._name; 
-    textPhotoPopup.textContent = this._name;
-  }
-
     // Добавить слушателя событий
     // Лучше сразу создать отдельный метод _setEventListeners, чтобы не засорять код в generateCard:
-    _setEventListeners () {
-      this._element.addEventListener('click', () => {
-        this._deleteCard();
-      })
-      this._element.addEventListener('click', () => {
-        this._likeCard();
-      })
-      // this._element.addEventListener('click', () => {
-      //   this._handleOpenPopup();
-      // })
-    };
-  }
+  _setEventListeners () {
+    this._element.querySelector('.cards__delete-button').addEventListener('click', () => {
+      this._deleteCard();
+    })
+    this._element.querySelector('.cards__like').addEventListener('click', () => {
+      this._likeCard();
+    })
+  };
+}
 
   
   
