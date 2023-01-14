@@ -7,7 +7,7 @@
 // Для каждой проверяемой формы создайте экземпляр класса FormValidator..
 
 
-class FormValidator {
+export class FormValidator {
   constructor(selection) {
     this._formSelector = selection.formSelector;
     this._inputSelector = selection.inputSelector;

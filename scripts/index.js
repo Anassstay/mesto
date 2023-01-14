@@ -1,4 +1,5 @@
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 import { selection, initialCards } from './constants.js';
 
 // Задаем const
@@ -25,7 +26,7 @@ export const textPhotoPopup = document.querySelector('.popup__image-text');
 
 const buttonCloseList = document.querySelectorAll('.popup__close-button');
 
-export const templateSelector = '#cards-template'
+// export const templateSelector = '#cards-template'
 
 export const openPopup = function (popup) {
   popup.classList.add('popup_opened');
@@ -66,10 +67,10 @@ function formEditProfileHandler (evt) {
   closePopup(popupEditProfile)
 }
 
-function handleOpenPopup(data) {
-  imagePhotoPopup.src = data.link;
-  imagePhotoPopup.alt = data.text; 
-  textPhotoPopup.textContent = data.text;
+function handleOpenPopup(name, link) {
+  imagePhotoPopup.src = link;
+  imagePhotoPopup.alt = name;
+  textPhotoPopup.textContent = name;
   openPopup(popupPhoto);
 }
 

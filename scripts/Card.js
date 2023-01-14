@@ -4,14 +4,13 @@
 //содержит приватные методы для каждого обработчика;
 //содержит один публичный метод, который возвращает полностью работоспособный и наполненный данными элемент карточки.
 
-import { imagePhotoPopup, textPhotoPopup, openPopup, popupPhoto, templateSelector } from './index.js';
+import { imagePhotoPopup, textPhotoPopup, openPopup, popupPhoto } from './index.js';
 
 export class Card {
   constructor (data, templateSelector, handleOpenPopup) {
   this._name = data.name;
   this._link = data.link;                                                                                                                                                                                                  
   this._templateSelector = templateSelector;
-  this._data = data;
   this._handleOpenPopup = handleOpenPopup
   }
   // научить класс Card возвращать разметку
@@ -53,6 +52,14 @@ export class Card {
     this._element.querySelector('.cards__like').classList.toggle('cards__like_active');
   }
 
+
+//  _handleOpenPopup(name, link) {
+//     imagePhotoPopup.src = link;
+//     imagePhotoPopup.alt = name;
+//     textPhotoPopup.textContent = name;
+//     openPopup(popupPhoto);
+//   }
+  
     // Добавить слушателя событий
     // Лучше сразу создать отдельный метод _setEventListeners, чтобы не засорять код в generateCard:
   _setEventListeners () {
@@ -61,6 +68,9 @@ export class Card {
     })
     this._element.querySelector('.cards__like').addEventListener('click', () => {
       this._likeCard();
+    })
+    this._element.querySelector('.cards__image').addEventListener('click', () => {
+      this._handleOpenPopup();
     })
   };
 }
