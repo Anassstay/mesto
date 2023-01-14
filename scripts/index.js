@@ -1,3 +1,6 @@
+// Доброго времени суток!) Очень тяжелая пр была для меня, но вроде что-то получилось.
+// Закомментированный код старый, потом удалю. Пока "черновой" вариант
+
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { selection, initialCards } from './constants.js';
@@ -25,8 +28,6 @@ export const imagePhotoPopup = document.querySelector('.popup__image');
 export const textPhotoPopup = document.querySelector('.popup__image-text');
 
 const buttonCloseList = document.querySelectorAll('.popup__close-button');
-
-// export const templateSelector = '#cards-template'
 
 export const openPopup = function (popup) {
   popup.classList.add('popup_opened');
@@ -74,34 +75,45 @@ function handleOpenPopup(name, link) {
   openPopup(popupPhoto);
 }
 
-// Добавить новую карточку
-const renderNewCard = (evt) => {
-  evt.preventDefault();
-  const renderNewCardData = 
-    {
-      name: cardsInputTitle.value,
-      link: cardsInputImage.value
-    };
-  const card = new Card (renderNewCardData.name, renderNewCardData.link, '#cards-template');
+const formAddCard = popupAddCard.querySelector('.popup__content_add');
+
+// render
+const renderNewCard = (item) => {
+  const card = new Card (item, '#cards-template', handleOpenPopup);
   const cardElement = card.generateCard();
   document.querySelector('.elements').prepend(cardElement);
-  closePopup(popupAddCard);
 }
 
 // Создать карточку через класс Card
-initialCards.forEach((data) => {
-  // При создании карточки передайте ей два аргумента — объект с данными и селектор template-элемента
-  const card = new Card(data, '#cards-template', handleOpenPopup);
-  const cardElement = card.generateCard();
-  // Добавляем в DOM
-  document.querySelector('.elements').append(cardElement);
+initialCards.forEach((item) => {
+  renderNewCard(item)
   });
 
-// валидация карточек через класс
+// Добавить новую карточку
+const addNewCard = (evt) => {
+  evt.preventDefault();
+  const renderNewCardData = 
+    {
+     name: cardsInputTitle.value,
+      link: cardsInputImage.value
+    }
+  renderNewCard(renderNewCardData)
+  closePopup(popupAddCard);
+  formAddCard.reset();
+  evt.submitter.classList.add('popup__save-button_disabled')
+  evt.submitter.disabled = true
+ }
+
+  // валидация карточек через класс
 const validationPopupEditProfile = new FormValidator(selection, popupEditProfile);
 const validationPopupAddCard = new FormValidator(selection, popupAddCard);
 validationPopupEditProfile.enableValidation();
 validationPopupAddCard.enableValidation();
+
+
+
+//////////
+// formAddCard.addEventListener('submit', formAddCardHandler);    
 
 buttonOpenEditProfile.addEventListener('click', function () {
   openPopup(popupEditProfile)
@@ -115,7 +127,7 @@ buttonOpenAddCard.addEventListener('click', function () {
   openPopup(popupAddCard)
 });
                                 
-popupAddCard.addEventListener('submit', renderNewCard);
+popupAddCard.addEventListener('submit', addNewCard);
 
 imagePhotoPopup.addEventListener('click', handleOpenPopup);
 
@@ -191,5 +203,4 @@ imagePhotoPopup.addEventListener('click', handleOpenPopup);
 // const buttonCloseEditProfile = popupEditProfile.querySelector('.popup__close-button');
 // const buttonClosePhoto = popupPhoto.querySelector('.popup__close-button');
 // const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
-// const formAddCard = popupAddCard.querySelector('.popup__content_add');
-// formAddCard.addEventListener('submit', formAddCardHandler);      
+  
