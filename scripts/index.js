@@ -23,13 +23,13 @@ const buttonOpenAddCard = document.querySelector('.profile__add-button');
 const cardsInputTitle = document.querySelector('.popup__input_add_name');
 const cardsInputImage = document.querySelector('.popup__input_add_link');
 
-export const popupPhoto = document.querySelector('.popup_photo');
-export const imagePhotoPopup = document.querySelector('.popup__image');
-export const textPhotoPopup = document.querySelector('.popup__image-text');
+const popupPhoto = document.querySelector('.popup_photo');
+const imagePhotoPopup = document.querySelector('.popup__image');
+const textPhotoPopup = document.querySelector('.popup__image-text');
 
 const buttonCloseList = document.querySelectorAll('.popup__close-button');
 
-export const openPopup = function (popup) {
+const openPopup = function (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', handleKeyEscape);
 }
@@ -68,7 +68,7 @@ function formEditProfileHandler (evt) {
   closePopup(popupEditProfile)
 }
 
-function handleOpenPopup(name, link, openPopup, popupPhoto) {
+function handleOpenPopup(name, link) {
   openPopup(popupPhoto);
   imagePhotoPopup.src = link;
   imagePhotoPopup.alt = name;
@@ -81,8 +81,10 @@ const formAddCard = popupAddCard.querySelector('.popup__content_add');
 const renderNewCard = (item) => {
   const card = new Card (item, '#cards-template', handleOpenPopup);
   const cardElement = card.generateCard();
-  document.querySelector('.elements').prepend(cardElement);
+  cardsContainer.prepend(cardElement);
 }
+// Не поняла, куда выносить вставку в контейнер. Ведь если выношу просто за пределы функции - CardElement недоступен.Ы
+
 
 // Создать карточку через класс Card
 initialCards.forEach((item) => {

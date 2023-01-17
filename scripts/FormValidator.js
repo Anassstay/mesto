@@ -8,30 +8,32 @@
 
 
 export class FormValidator {
-  constructor(selection) {
+  constructor(selection, formElement) {
     this._formSelector = selection.formSelector;
     this._inputSelector = selection.inputSelector;
     this._submitButtonSelector = selection.submitButtonSelector;
     this._inactiveButtonClass = selection.inactiveButtonClass;
     this._inputErrorClass = selection.inputErrorClass;
     this._errorClass = selection.errorClass;
-  }
+    this._formElement = formElement;
+
+  };
   
   // 1. Добавить ошибку
   _showInputError = (input) => {
     const error = document.querySelector(`#${input.id}-error`); 
-    input.classList.add(this._inputErrorClass)
-    error.textContent = input.validationMessage
-    error.classList.add(this._ErrorClass)
-    }
+    input.classList.add(this._inputErrorClass);
+    error.textContent = input.validationMessage;
+    error.classList.add(this._ErrorClass);
+    };
   
   // 2. Удалить ошибку
   _hideInputError = (input) => {
     const error = document.querySelector(`#${input.id}-error`); 
-    input.classList.remove(this._inputErrorClass)
-    error.classList.remove(this._ErrorClass)
-    error.textContent = ''
-    }
+    input.classList.remove(this._inputErrorClass);
+    error.classList.remove(this._ErrorClass);
+    error.textContent = '';
+    };
 
   // 3. Проверка валидности
   _checkInputValidity = (input) => {
@@ -40,42 +42,40 @@ export class FormValidator {
     this._hideInputError(input, input.validationMessage)
     } else {
     // показать ошибку
-    this._showInputError(input)
-    }
+    this._showInputError(input);
+    };
   };
 
   // 4. Сделать кнопку сохранить активной и неактивной
-  _toggleButtonState = (inputs, button) => {
-    const isFormValid = inputs.every(input => input.validity.valid)
+  _toggleButtonState = () => {
+    const isFormValid = this._inputs.every(input => input.validity.valid)
       if (isFormValid) {
       // Раздизейблить
-      button.classList.remove(this._inactiveButtonClass)
-      button.disabled = false
+      this._button.classList.remove(this._inactiveButtonClass);
+      this._button.disabled = false;
       } else {
       // Задизейблить
-      button.classList.add(this._inactiveButtonClass)
-      button.disabled = true
+      this._button.classList.add(this._inactiveButtonClass);
+      this._button.disabled = true;
     }
   };
 
   // 5. Работа с массивами forms и inputs
   enableValidation = () => {
-    // const forms = [...document.querySelectorAll(this._formSelector)]
-    const form = document.querySelector(this._formSelector)
-    
-    form.forEach(form => {
-      // this._inputs = [...form.querySelectorAll(this._inputSelector)]
-      this._inputs = form.querySelectorAll(this._inputSelector)
-      this._button = form.querySelector(this._submitButtonSelector)
-      // для установки кнопок на формах при загрузке сайта в корректное положение
-      this._toggleButtonState(this._inputs, this._button)
 
-      this._inputs.forEach(input => {
-        input.addEventListener('input', () => {
-          this._checkInputValidity(input)
-          this._toggleButtonState()
-        })
-      })
-    })
+    this._inputs = [...this._formElement.querySelectorAll(this._inputSelector)];
+    this._button = this._formElement.querySelector(this._submitButtonSelector);
+    this._formElement.addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
+    this._formElement.addEventListener('reset', () => {
+      this._toggleButtonState();
+    });
+    this._inputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._checkInputValidity(input);
+        this._toggleButtonState();
+      });
+    });
   };
 };
