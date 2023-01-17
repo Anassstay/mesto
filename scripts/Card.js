@@ -34,11 +34,11 @@ export class Card {
     // Запишем разметку в приватное поле _element. 
     // Так у других элементов появится доступ к ней.
     this._element = this._getTemplate();
+    this._image = this._element.querySelector('.cards__image');
     // Добавим данные
-    this._element.querySelector('.cards__image').src = this._link;
-    this._element.querySelector('.cards__image').alt = this._name;
+    this._image.src = this._link;
+    this._image.alt = this._name;
     this._element.querySelector('.cards__title').textContent = this._name;
-    // imagePhotoPopup.addEventListener('click', this._handleOpenPopup);
     this._setEventListeners();
     // Вернём элемент наружу
     return this._element;
@@ -51,14 +51,6 @@ export class Card {
   _likeCard() {
     this._element.querySelector('.cards__like').classList.toggle('cards__like_active');
   }
-
-
-//  _handleOpenPopup(name, link) {
-//     imagePhotoPopup.src = link;
-//     imagePhotoPopup.alt = name;
-//     textPhotoPopup.textContent = name;
-//     openPopup(popupPhoto);
-//   }
   
     // Добавить слушателя событий
     // Лучше сразу создать отдельный метод _setEventListeners, чтобы не засорять код в generateCard:
@@ -69,11 +61,8 @@ export class Card {
     this._element.querySelector('.cards__like').addEventListener('click', () => {
       this._likeCard();
     })
-    this._element.querySelector('.cards__image').addEventListener('click', () => {
+    this._image.addEventListener('click', () => {
       this._handleOpenPopup();
     })
   };
 }
-
-  
-  

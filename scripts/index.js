@@ -68,11 +68,11 @@ function formEditProfileHandler (evt) {
   closePopup(popupEditProfile)
 }
 
-function handleOpenPopup(name, link) {
+function handleOpenPopup(name, link, openPopup, popupPhoto) {
+  openPopup(popupPhoto);
   imagePhotoPopup.src = link;
   imagePhotoPopup.alt = name;
   textPhotoPopup.textContent = name;
-  openPopup(popupPhoto);
 }
 
 const formAddCard = popupAddCard.querySelector('.popup__content_add');

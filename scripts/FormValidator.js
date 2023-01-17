@@ -60,18 +60,20 @@ export class FormValidator {
 
   // 5. Работа с массивами forms и inputs
   enableValidation = () => {
-    const forms = [...document.querySelectorAll(this._formSelector)]
+    // const forms = [...document.querySelectorAll(this._formSelector)]
+    const form = document.querySelector(this._formSelector)
     
-    forms.forEach(form => {
-      const inputs = [...form.querySelectorAll(this._inputSelector)]
-      const button = form.querySelector(this._submitButtonSelector)
+    form.forEach(form => {
+      // this._inputs = [...form.querySelectorAll(this._inputSelector)]
+      this._inputs = form.querySelectorAll(this._inputSelector)
+      this._button = form.querySelector(this._submitButtonSelector)
       // для установки кнопок на формах при загрузке сайта в корректное положение
-      this._toggleButtonState(inputs, button)
+      this._toggleButtonState(this._inputs, this._button)
 
-      inputs.forEach(input => {
+      this._inputs.forEach(input => {
         input.addEventListener('input', () => {
           this._checkInputValidity(input)
-          this._toggleButtonState(inputs, button)
+          this._toggleButtonState()
         })
       })
     })

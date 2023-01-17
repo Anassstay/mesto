@@ -1,5 +1,6 @@
 .popup__save-button {
   height: 50px;
+  min-width: 238px;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
