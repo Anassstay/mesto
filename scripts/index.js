@@ -1,5 +1,4 @@
-// Доброго времени суток!) Очень тяжелая пр была для меня, но вроде что-то получилось.
-// Закомментированный код старый, потом удалю. Пока "черновой" вариант
+// Доброго времени суток! Некоторые замечания было тяжело реализовать, поскольку плохо разбираюсь в терминологии и вообще в логике работы
 
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
@@ -47,7 +46,8 @@ const closePopup = function (popup) {
 document.querySelectorAll('.popup').forEach( popup => {
   popup.addEventListener('mousedown', (evt) => { 
     if (evt.target === evt.currentTarget) { 
-      closePopup(popup); 
+      closePopup(popup);
+      // Тут тоже не получилось реализовать через ||. Если можно, можете пример привести?
     }; 
   });
 });
@@ -104,6 +104,7 @@ const addNewCard = (evt) => {
   formAddCard.reset();
   evt.submitter.classList.add('popup__save-button_disabled')
   evt.submitter.disabled = true
+  // не получилось реализовать ваше замечание( Не поняла на каком экземпляре класса нужно вызывать. И при публичном методе вылезает ошибка toggleButtonState is not a function
  }
 
   // валидация карточек через класс
@@ -132,77 +133,3 @@ buttonOpenAddCard.addEventListener('click', function () {
 popupAddCard.addEventListener('submit', addNewCard);
 
 imagePhotoPopup.addEventListener('click', handleOpenPopup);
-
-
-/// лишнее и не использованное
-
-// initialCards.forEach(function(item) {
-//   cardsContainer.append(createCard(item.name, item.link));
-//   });
-
-
-// function formAddCardHandler (evt, popup) {
-//   evt.preventDefault();
-//   cardsContainer.prepend(createCard(cardsInputTitle.value, cardsInputImage.value));
-//   formAddCard.reset();
-//   evt.submitter.classList.add('popup__save-button_disabled')
-//   evt.submitter.disabled = true
-//   closePopup(popupAddCard);
-// }
-
-// function formAddCardHandler (evt, popup, name, link) {
-//   evt.preventDefault();
-//   cardsContainer.prepend(new Card(renderNewCardData.name, renderNewCardData.link, '#cards-template'));
-//   formAddCard.reset();
-//   evt.submitter.classList.add('popup__save-button_disabled')
-//   evt.submitter.disabled = true
-//   closePopup(popupAddCard);
-// }
-
-
-
-// function createCard(cardsTitleValue, cardsImageValue) {
-//   const cards = cardsTemplate.querySelector('.cards').cloneNode(true);
-//   const cardsImage = cards.querySelector('.cards__image');
-//   cardsImage.src = cardsImageValue;
-//   cardsImage.alt = cardsTitleValue;
-//   cards.querySelector('.cards__title').textContent = cardsTitleValue;
-//   cards.querySelector('.cards__delete-button').addEventListener('click', function () {
-//     cards.remove();
-//   });
-//   cards.querySelector('.cards__like').addEventListener('click', function (event) {
-//     event.target.classList.toggle('cards__like_active');
-//   });
-//   cardsImage.addEventListener('click', function () {
-//     openPopup(popupPhoto);
-//     imagePhotoPopup.src = cardsImageValue;
-//     imagePhotoPopup.alt = cardsTitleValue; 
-//     textPhotoPopup.textContent = cardsTitleValue;
-//   });
-//   return cards;
-// }
-
-
-
-
-// const renderNewCard = (data, ) => {
-//   evt.preventDefault();
-//   const renderNewCardData = 
-//     {
-//       name: cardsInputTitle.value,
-//       link: cardsInputImage.value
-//     };
-//   const card = new Card (renderNewCardData.name, renderNewCardData.link, '#cards-template');
-//   const cardElement = card.generateCard();
-//   document.querySelector('.elements').prepend(cardElement);
-//   closePopup(popupAddCard);
-// }
-
-// initialCards.forEach((data) => {
-//   renderNewCard(data)
-// })
-
-// const buttonCloseEditProfile = popupEditProfile.querySelector('.popup__close-button');
-// const buttonClosePhoto = popupPhoto.querySelector('.popup__close-button');
-// const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
-  
