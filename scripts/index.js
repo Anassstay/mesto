@@ -84,7 +84,7 @@ initialCards.forEach((item) => {
 });
 
 // Добавить новую карточку
-const newCard = (evt) => {
+const createNewCard = (evt) => {
   evt.preventDefault();
   const renderNewCardData = 
     {
@@ -116,4 +116,4 @@ buttonOpenAddCard.addEventListener('click', function () {
   openPopup(popupAddCard);
 });
                                 
-popupAddCard.addEventListener('submit', newCard);
+popupAddCard.addEventListener('submit', createNewCard);
