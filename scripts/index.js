@@ -84,14 +84,13 @@ initialCards.forEach((item) => {
 });
 
 // Добавить новую карточку
-const addNewCard = (evt) => {
+const newCard = (evt) => {
   evt.preventDefault();
   const renderNewCardData = 
     {
      name: cardsInputTitle.value,
       link: cardsInputImage.value
-    }
-  // renderNewCard(renderNewCardData)
+    };
   cardsContainer.prepend(renderNewCard(renderNewCardData));
   closePopup(popupAddCard);
   formAddCard.reset();
@@ -117,4 +116,4 @@ buttonOpenAddCard.addEventListener('click', function () {
   openPopup(popupAddCard);
 });
                                 
-popupAddCard.addEventListener('submit', addNewCard);
+popupAddCard.addEventListener('submit', newCard);
