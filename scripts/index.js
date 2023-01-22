@@ -91,7 +91,8 @@ const addNewCard = (evt) => {
      name: cardsInputTitle.value,
       link: cardsInputImage.value
     }
-  renderNewCard(renderNewCardData)
+  // renderNewCard(renderNewCardData)
+  cardsContainer.prepend(renderNewCard(renderNewCardData));
   closePopup(popupAddCard);
   formAddCard.reset();
  };
