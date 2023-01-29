@@ -42,13 +42,13 @@
   <section class="popup popup_edit">
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-      <form class="popup__form popup__content" name="content" novalidate>
+      <form class="popup__form popup__content popup__content_edit" name="content" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
         <input
             class="popup__input popup__input_type_name"
             type="text"
             id="fullname-input"
-            name="fullname"
+            name="name"
             minlength="2"
             maxlength="40" 
             required
@@ -81,7 +81,7 @@
             class="popup__input popup__input_add_name"
             type="text"
             id="place-input"
-            name="place"
+            name="name"
             minlength="2"
             maxlength="30"
             required
@@ -124,9 +124,7 @@
   </div>
 </template>
 
-<!-- <script type="module" src="./scripts/constants.js"></script> -->
-<script type="module" src="./scripts/index.js"></script>
-<!-- <script src="./scripts/FormValidator.js"></script> -->
+<script type="module" src="./pages/index.js"></script>
 
 </body>
 </html>

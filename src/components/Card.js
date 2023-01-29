@@ -1,15 +1,15 @@
 export class Card {
-  constructor (data, templateSelector, handleOpenPopup) {
+  constructor (data, cardTemplateSelector, handleOpenPopup) {
   this._name = data.name;
   this._link = data.link;                                                                                                                                                                                                  
-  this._templateSelector = templateSelector;
+  this._cardTemplateSelector = cardTemplateSelector;
   this._handleOpenPopup = handleOpenPopup;
   };
 
   _getTemplate() {
     // забираем разметку из HTML и клонируем элемент
     const cardElement = document
-    .querySelector(this._templateSelector)
+    .querySelector(this._cardTemplateSelector)
     .content
     .querySelector('.cards')
     .cloneNode(true);
