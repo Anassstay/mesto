@@ -6,20 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Анастасия Федина">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <title>Места России</title>
 </head>
 
 <body class="page">
 
   <header class="header">
-      <img src="./images/header-logo.svg" alt="Логотип" class="header__logo">
+      <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип" class="header__logo">
   </header>
 
   <main class="content">
     <section class="profile">
       <div class="profile__info">
-        <img src="./images/avatar.jpg" alt="Аватар" class="profile__image">
+        <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__image">
         <div class="profile__text">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
