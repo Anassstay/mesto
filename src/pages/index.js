@@ -105,5 +105,4 @@ buttonOpenEditProfile.addEventListener('click', function () {
   const {name, info} = classUserInfo.getUserInfo();
   nameInput.value = name; 
   infoInput.value = info;
-  validationPopupEditProfile.resetValidation();
 });
