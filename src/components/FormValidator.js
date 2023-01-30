@@ -36,6 +36,17 @@ export class FormValidator {
     };
   };
 
+  // Метод для очистки ошибок и управления кнопкой
+  resetValidation() {
+    //управляем кнопкой
+    this.toggleButtonState();
+    this._inputs.forEach((input) => {
+      //очищаем ошибки
+      this._hideInputError(input) 
+    });
+
+  }
+
   // 4. Сделать кнопку сохранить активной и неактивной
   toggleButtonState = () => {
     const isFormValid = this._inputs.every(input => input.validity.valid)

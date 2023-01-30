@@ -20,12 +20,10 @@ export class Popup {
   };
 
   setEventListeners() {
-    document.querySelectorAll('.popup').forEach( popup => {
-      popup.addEventListener('mousedown', (evt) => { 
-        if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-button')) { 
-          this.close();
-        };
-      });
+    this._popup.addEventListener('mousedown', (evt) => { 
+      if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-button')) { 
+        this.close();
+      };
     });
   };
 };

@@ -1,6 +1,6 @@
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
-import { selection, initialCards } from '../components/constants.js';
+import { selection, initialCards } from '../utils/constants.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
@@ -53,6 +53,25 @@ const validationPopupAddCard = new FormValidator(selection, popupAddCard);
 validationPopupEditProfile.enableValidation();
 validationPopupAddCard.enableValidation();
 
+// const formValidators = {};
+// // Включение валидации
+// const enableValidation = (input) => {
+//   const formList = Array.from(document.querySelectorAll(input.formSelector));
+//   formList.forEach((formElement) => {
+//     const validator = new FormValidator(formElement, input);
+//    // получаем данные из атрибута `name` у формы
+//     const formName = formElement.getAttribute('name');
+//     // в объект записываем под именем формы
+//     formValidators[formName] = validator;
+//     validator.enableValidation();
+//   });
+// };
+// enableValidation(input);
+
+// formValidators[ profileForm.getAttribute('name') ].resetValidation()   
+//====> не совсем поняла, откуда берется profileForm, поэтому пока оставила старый код. И нужно ли что-то добавлять в formValidators
+ 
+
 const popupWithFormEditProfile = new PopupWithForm ({
   formSubmit: (userData) => {
     classUserInfo.setUserInfo(userData);
@@ -77,6 +96,8 @@ popupWithFormAddCard.setEventListeners();
 
 buttonOpenAddCard.addEventListener('click', function () {
   popupWithFormAddCard.open();
+  validationPopupAddCard.toggleButtonState();
+  validationPopupAddCard.resetValidation();
 });
 
 buttonOpenEditProfile.addEventListener('click', function () {
@@ -84,133 +105,5 @@ buttonOpenEditProfile.addEventListener('click', function () {
   const {name, info} = classUserInfo.getUserInfo();
   nameInput.value = name; 
   infoInput.value = info;
+  validationPopupEditProfile.resetValidation();
 });
-
-// const formEditProfile = popupEditProfile.querySelector('.popup__content');
-// const profileName = document.querySelector('.profile__title');
-// const profileInfo = document.querySelector('.profile__subtitle');
-// const cardsInputTitle = document.querySelector('.popup__input_add_name');
-// const cardsInputImage = document.querySelector('.popup__input_add_link');
-
-// const formPopupAddCard = popupAddCard.querySelector('.popup__content_add');
-// const formPopupEditProfile = popupEditProfile.querySelector('.popup__content_edit');
-
-// const renderNewCardData = 
-//     {
-//      name: cardsInputTitle.value,
-//      link: cardsInputImage.value
-//     };
-
-// const popupPhoto = document.querySelector('.popup_photo');
-// const imagePhoto = document.querySelector('.popup__image');
-// const textPhoto = document.querySelector('.popup__image-text');
-
-// const buttonCloseList = document.querySelectorAll('.popup__close-button');
-
-// const openPopup = function (popup) {
-//   popup.classList.add('popup_opened');
-//   document.addEventListener('keyup', handleKeyEscape);
-// };
-
-// buttonCloseList.forEach(btn => {
-//   const popup = btn.closest('.popup');
-//   btn.addEventListener('click', () => closePopup(popup)); 
-// });
-
-// const closePopup = function (popup) {
-//   popup.classList.remove('popup_opened');
-//   document.removeEventListener('keyup', handleKeyEscape);
-// };
-
-// document.querySelectorAll('.popup').forEach( popup => {
-//   popup.addEventListener('mousedown', (evt) => { 
-//     if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-button')) { 
-//       closePopup(popup);
-//     }; 
-//   });
-// });
-
-// Функции
-// Закрыть попап кликом на Escape
-// function handleKeyEscape (evt) {
-//   if (evt.key === 'Escape') {
-//     const popupToClose = document.querySelector('.popup_opened');
-//     closePopup(popupToClose);
-//   };
-// };
-
-// function formEditProfileHandler (evt) {
-//   evt.preventDefault();
-//   profileName.textContent = nameInput.value;
-//   profileInfo.textContent = infoInput.value;
-//   popupEditProfile.close();
-// };
-
-// function handleOpenPopup(name, link) {
-//   popupPhoto.open();
-//   imagePhotoPopup.src = link;
-//   imagePhotoPopup.alt = name;
-//   textPhotoPopup.textContent = name;
-// };
-
-// initialCards.forEach((item) => {
-//   cardsContainer.prepend(renderNewCard(item));
-// });
-
-// Добавить новую карточку
-// const createNewCard = (evt) => {
-//   evt.preventDefault();
-//   const renderNewCardData = 
-//     {
-//      name: cardsInputTitle.value,
-//      link: cardsInputImage.value
-//     };
-//   cardsContainer.prepend(renderNewCard(renderNewCardData));
-//   popupWithFormAddCard.close();
-//   // formAddCard.reset();
-//   validationPopupAddCard.toggleButtonState();
-//   // вызыв функции вместо disabled. управляем кнопкой сабмита и очищаем поля формы от ошибок
-//   // (после добавления карточки, кодом очищаем поля и не происходит события input, поэтому кнопка не валидируется и нужно вызвать это событие руками)
-//  };
-
-//  const profileSelectors = {
-//   nameSelector: '.profile__title',
-//   infoSelector: '.profile__subtitle'
-// };
-
-
-
-// formEditProfile.addEventListener('submit', formEditProfileHandler);
-
-
-                                
-// popupAddCard.addEventListener('submit', createNewCard);
-// AddCard.addEventListener('submit', createNewCard);
-
-
-// function renderCard() {
-//   const renderNewCardData = 
-//     {
-//      name: cardsInputTitle.value,
-//      link: cardsInputImage.value
-//     };
-//   const card = createCard(renderNewCardData);
-//   const cardElement = card.createCard();
-//   cardsContainer.addCard(cardElement);
-// }
-
-// const createNewCard = (evt) => {
-//   evt.preventDefault();
-//   const renderNewCardData = 
-//     {
-//      name: cardsInputTitle.value,
-//      link: cardsInputImage.value
-//     };
-//   cardsContainer.prepend(renderNewCard(renderNewCardData));
-//   popupWithFormAddCard.close();
-//   // formAddCard.reset();
-//   validationPopupAddCard.toggleButtonState();
-//  };
-
-// const classSection = new Section ({ items: initialCards, renderer: renderCard}, cardsContainer);
-
