@@ -11,17 +11,17 @@ export class FormValidator {
   
   // 1. Добавить ошибку
   _showInputError = (input) => {
-    const error = document.querySelector(`#${input.id}-error`); 
+    const error = this._formElement.querySelector(`#${input.id}-error`); 
     input.classList.add(this._inputErrorClass);
     error.textContent = input.validationMessage;
-    error.classList.add(this._ErrorClass);
+    error.classList.add(this._errorClass);
     };
   
   // 2. Удалить ошибку
   _hideInputError = (input) => {
-    const error = document.querySelector(`#${input.id}-error`); 
+    const error = this._formElement.querySelector(`#${input.id}-error`); 
     input.classList.remove(this._inputErrorClass);
-    error.classList.remove(this._ErrorClass);
+    error.classList.remove(this._errorClass);
     error.textContent = '';
     };
 
