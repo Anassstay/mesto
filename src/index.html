@@ -18,18 +18,9 @@
   <main class="content">
     <section class="profile">
       <div class="profile__info">
-
-        <!-- <div class="profile__avatar-edit">
-          <button class="profile__avatar-button"></button>
-          <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
-        </div> -->
-
-        <!-- <div class="profile__avatar-edit"> -->
           <button class="profile__avatar-button">
             <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
           </button>
-          
-        <!-- </div> -->
 
         <div class="profile__text">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -77,7 +68,7 @@
             required
             placeholder="О себе"
         >
-        <span class="popup__input-error" id='info-input-error'></span>
+        <span class="popup__input-error" id="info-input-error"></span>
         <button class="popup__button popup__save-button" type="submit" aria-label="Добавить изменения">Сохранить</button>
       </form>
     </div>
@@ -99,7 +90,7 @@
             required
             placeholder="Название"
         >
-        <span class="popup__input-error" id='place-input-error'></span>
+        <span class="popup__input-error" id="place-input-error"></span>
         <input 
             class="popup__input popup__input_add_link" 
             type="url"
@@ -108,7 +99,7 @@
             required
             placeholder="Ссылка на картинку" 
         >
-        <span class="popup__input-error" id='url-input-error'></span>
+        <span class="popup__input-error" id="url-input-error"></span>
         <button class="popup__save-button" type="submit" aria-label="Добавить изменения">Сохранить</button>
       </form>
     </div>

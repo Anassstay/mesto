@@ -24,7 +24,7 @@ export class Api {
   }
 
   // Загрузить карточки с сервера
-  getInitialCards() {
+  getInitialData() {
     return fetch(`${this._baseUrl}/cards/`, {
         headers: this._headers
     })
