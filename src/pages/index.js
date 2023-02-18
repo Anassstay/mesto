@@ -71,73 +71,25 @@ const createCard = (data) => {
       })
     },
 
-    handleLikeClick: (_id) => {
-      if (card.isLiked() !== true) {
+    handleAddLike: (_id) => {
         api.addLike(_id)
         .then((data) => {
-          card.updateLikesCounter(data);
+          card.setLikes(data);
         })
         .catch(err => console.log(err))
-      }
-      else {
-        api.deleteLike(_id)
-        .then((data) => {
-          card.updateLikesCounter(data);
-        })
-          .catch(err => console.log(err))
-      }
-    }
+    },
+
+    handleDeleteLike: (_id) => {
+      api.deleteLike(_id)
+      .then((data) => {
+        card.setLikes(data);
+      })
+      .catch(err => console.log(err))
+  }
+
   })
   return card.generateCard()
-}
-
-// // Отрисовка каждого отдельного элемента
-// function renderNewCard(item) {
-//   classSection.addCard(createCard(item));
-// }
-
-
-
-
-// Функция создания карточки
-// const renderNewCard = (item) => {
-
-//   const handleDeleteCard = (_id) => {
-//     popupWithConfirmationDeleteCard.open();
-//     popupWithConfirmationDeleteCard.handleFormSubmit(() => {
-//     popupWithConfirmationDeleteCard.setTextButton('Удаление...')
-//       api.deleteCard(_id)
-//         .then(() => {
-//           card.deleteCard()
-//           popupWithConfirmationDeleteCard.close();
-//         })
-//         .catch(err => console.log(err))
-//         .finally(() => {
-//           popupWithConfirmationDeleteCard.setTextButton('Да')
-//         })
-//     })
-//   };
-
-// //   const handleAddLike = (_id) => {
-// //     api.addLike(_id)
-// //       .then((data) => {
-// //         card.updateNumberLikes(data);
-// //       })
-// //       .catch(err => console.log(err))
-// //     }
-
-// //   const handleDeleteLike = (_id) => {
-// //     api.deleteLike(_id)
-// //       .then((data) => {
-// //         card.updateNumberLikes(data);
-// //       })
-// //       .catch(err => console.log(err))
-// //   };
-  
-// //   const card = new Card (item, userInfo.getUserId(), '#cards-template', handleOpenPopupPhoto, handleDeleteCard, handleAddLike, handleDeleteLike);
-//   const cardElement = card.generateCard();
-//   return cardElement;
-// };
+};
 
 // Создать экземпляр класса с информацией о юзере
 const userInfo = new UserInfo ({
@@ -187,8 +139,7 @@ const popupWithFormAddCard = new PopupWithForm ({
     popupWithFormAddCard.setButtonText(true);
     api.addNewCard(userData)
     .then((userData) => {
-      const createNewCard = renderNewCard(userData);
-      classSection.addItem(createNewCard);
+      classSection.addCard(createCard(userData))
       popupWithFormAddCard.close();
     })
     .catch(err => console.log(err))

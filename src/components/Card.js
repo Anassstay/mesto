@@ -2,9 +2,10 @@ export class Card {
   constructor ( data, userId, cardTemplateSelector, handleOpenPopup, {handleDeleteCard, handleAddLike, handleDeleteLike} ) {
   this._name = data.name;
   this._link = data.link;
-  this._likesNumber = data.likesNumber;
+  this._likes = data.likes;
   this._userId = userId;
   this._id = data._id;
+  this._ownerId = data.owner._id;
   this._cardTemplateSelector = cardTemplateSelector;
   this._handleOpenPopup = handleOpenPopup;
   this._handleDeleteCard = handleDeleteCard;
@@ -35,7 +36,10 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardsTitle.textContent = this._name;
+
     this._setEventListeners();
+    this._removeButton();
+    this._checkNumberLikes();
 
     return this._element;
   };
@@ -45,26 +49,28 @@ export class Card {
     this._element = null;
   };
 
-  // Лайк на карточке если есть, то
-  _isLiked() {
-    if (this._likesNumber.some((user) => {
+  _checkNumberLikes() {
+    if (this._likes.some((user) => {
       return this._userId === user._id;
     })) {
       this._like.classList.add('cards__like_active');
     }
   };
 
-  _removeButton() {
-    if (this._ownerId !== this._userId) this._deleteButton.remove();
-  };
-
-  // Отображение количество лайков
-  updateNumberLikes(data) {
-    this._likesNumber = data.likesNumber;
-    this._likeNumber.textContent = this._likesNumber.length;
+  _toggleLike() {
     this._like.classList.toggle('cards__like_active');
   };
-  
+
+  setLikes(newLikesArray) {
+    this._likes = newLikesArray
+    this._likeNumber.textContent = newLikesArray.length;
+    this._toggleLike();
+  };
+
+  _removeButton() {  
+    if (this._ownerId !== this._userId)this._deleteButton.remove();
+  };
+
   // Добавить слушателя событий
   _setEventListeners () {
     this._deleteButton.addEventListener('click', () => {
@@ -72,7 +78,7 @@ export class Card {
     });
 
     this._like.addEventListener('click', () => {
-      if (!this._like.classList.contains('card__like_active')) {
+      if (!this._like.classList.contains('cards__like_active')) {
         this._handleAddLike(this._id);
       } else {
         this._handleDeleteLike(this._id);
