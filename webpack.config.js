@@ -52,6 +52,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
         }, 
         ]
     },
+    devtool: 'evar-source-map',
     plugins: [
         new HtmlWebpackPlugin({
           template: './src/index.html'

@@ -44,11 +44,6 @@ export class Card {
     return this._element;
   };
 
-  deleteCard() {
-    this._element.remove();
-    this._element = null;
-  };
-
   _checkNumberLikes() {
     if (this._likes.some((user) => {
       return this._userId === user._id;
@@ -61,14 +56,19 @@ export class Card {
     this._like.classList.toggle('cards__like_active');
   };
 
-  setLikes(newLikesArray) {
-    this._likes = newLikesArray
-    this._likeNumber.textContent = newLikesArray.length;
+  setLikes(arr) {
+    this._likes = arr.likes
+    this._likeNumber.textContent = this._likes.length;
     this._toggleLike();
   };
 
   _removeButton() {  
     if (this._ownerId !== this._userId)this._deleteButton.remove();
+  };
+
+  deleteCard() {
+    this._element.remove();
+    this._element = null;
   };
 
   // Добавить слушателя событий

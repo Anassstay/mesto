@@ -23,7 +23,7 @@ export class UserInfo {
   // Принять новые данные пользователя и добавить на страницу
   setUserInfo(data) {
     this._name.textContent = data.name;
-    this._info.textContent = data.info;
+    this._info.textContent = data.about;
     this._avatar.src = data.avatar;
     this._userId = data._id;
     };

@@ -109,4 +109,4 @@ export class Api {
       return this._getResponseData(res)
     })
   }
-}
+};

@@ -31,7 +31,7 @@ const api = new Api({
   }
 });
 
-let userId = " ";
+let userId;
 
 // Загрузка информации с сервера
 Promise.all([api.getInitialData(), api.getUserInfo()])

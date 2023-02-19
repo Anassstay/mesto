@@ -1,5 +1,4 @@
-.cards__like_active {
-  background-repeat: no-repeat;
-  background-position: center;
-  background: url(../../../images/likeactive.svg);
+.cards__like_active { 
+  opacity: 1; 
+  background: url(https://code.s3.yandex.net/web-code/dom/heart-filled.svg) center no-repeat; 
 }
