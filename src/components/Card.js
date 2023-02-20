@@ -33,10 +33,14 @@ export class Card {
     this._like = this._element.querySelector('.cards__like');
     this._likeNumber = this._element.querySelector('.cards__like-number');
     
+ 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardsTitle.textContent = this._name;
 
+    this._element.querySelector('.cards__title').textContent = this._name;
+    this._likeNumber.textContent = this._likes.length;
+    
     this._setEventListeners();
     this._removeButton();
     this._checkNumberLikes();

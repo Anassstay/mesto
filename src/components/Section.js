@@ -5,6 +5,12 @@ export class Section {
   };
 
   // Отрисовка всех элементов
+  // renderCards(initialData) {
+  //   initialData.forEach(item => {
+  //     this._renderer(item);
+  //   });
+  // };
+
   renderCards(initialData) {
     initialData.forEach(item => {
       this._renderer(item);
@@ -14,4 +20,5 @@ export class Section {
   addCard(element) {
     this._container.prepend(element);
   };
+
 };

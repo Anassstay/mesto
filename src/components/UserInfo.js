@@ -22,9 +22,10 @@ export class UserInfo {
 
   // Принять новые данные пользователя и добавить на страницу
   setUserInfo(data) {
-    this._name.textContent = data.name;
-    this._info.textContent = data.about;
-    this._avatar.src = data.avatar;
-    this._userId = data._id;
+    // Так как мы работаем с сервером, то перед тем как устанавливать значения мы должны проверить были ли они переданы в виде аргументов.
+    if(data.name) {this._name.textContent = data.name}
+    if(data.about) {this._info.textContent = data.about;}
+    if(data.avatar) {this._avatar.src = data.avatar;}
+    if(data._id) {this._userId = data._id;}
     };
 };

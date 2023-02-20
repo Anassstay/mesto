@@ -37,19 +37,19 @@ let userId;
 Promise.all([api.getInitialData(), api.getUserInfo()])
   .then(([initialData, userData]) => {
     userInfo.setUserInfo(userData);
-    classSection.renderCards(initialData);
+    section.renderCards(initialData.reverse());
     return userId = userData._id;
   })
   .catch(err => console.log(err))
 
 // Открыть попап с фото при клике
 const handleOpenPopupPhoto = (textPhoto, imagePhoto) => {
-  classPopupWithImage.open(textPhoto, imagePhoto);
+  popupWithImage.open(textPhoto, imagePhoto);
 };
 
 // Создать экземпляр класса с фото
-const classPopupWithImage = new PopupWithImage('.popup_photo')
-classPopupWithImage.setEventListeners();
+const popupWithImage = new PopupWithImage('.popup_photo')
+popupWithImage.setEventListeners();
 
 // для создания карточки
 const createCard = (data) => {
@@ -87,7 +87,7 @@ const createCard = (data) => {
       .catch(err => console.log(err))
   }
 
-  })
+  });
   return card.generateCard()
 };
 
@@ -99,9 +99,9 @@ const userInfo = new UserInfo ({
 });
 
 // Создать экземпляр класса отрисовки карточек
-const classSection = new Section ({
+const section = new Section ({
   renderer: (item) => {
-    classSection.addCard(createCard(item));
+    section.addCard(createCard(item));
   }
 }, 
 cardsContainer
@@ -139,7 +139,7 @@ const popupWithFormAddCard = new PopupWithForm ({
     popupWithFormAddCard.setButtonText(true);
     api.addNewCard(userData)
     .then((userData) => {
-      classSection.addCard(createCard(userData))
+      section.addCard(createCard(userData))
       popupWithFormAddCard.close();
     })
     .catch(err => console.log(err))
